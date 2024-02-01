@@ -8,6 +8,7 @@ import { Buffer } from 'buffer'
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import { Modal, Card } from 'antd';
+import baseurl from "../Api";
 
 const Plantdetailsview = () => {
 
@@ -27,7 +28,7 @@ const Plantdetailsview = () => {
   var [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:3005/pview/")
+    axios.get(baseurl+"/plantdetails/pview")
       .then(response => {
         console.log(response.data)
         setPlantdetailsview(response.data)
@@ -37,7 +38,7 @@ const Plantdetailsview = () => {
 
   const deletevalues = (id) => {
     console.log("Deleted", id)
-    axios.put("http://localhost:3005/updatestatus/" + id)
+    axios.put(baseurl+"/plantdetails/updatestatus/" + id)
       .then((response) => {
         alert("DELETED")
         window.location.reload(false);
@@ -96,7 +97,7 @@ const Plantdetailsview = () => {
                 <TableRow key={index}>
                   <TableCell>{value.plantid}</TableCell>
                   <TableCell>{value.plantname}</TableCell>
-                  <TableCell>{value.planttype}</TableCell>
+                  <TableCell>{value.Planttype}</TableCell>
                   <TableCell>{value.color}</TableCell>
                   <TableCell>{value.size}</TableCell>
                   <TableCell>{value.price}</TableCell>

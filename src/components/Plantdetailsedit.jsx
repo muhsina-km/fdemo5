@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import axios from 'axios';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import baseurl from "../Api";
 
 const Plantdetailsedit = (props) => {
 
@@ -17,7 +18,7 @@ const Plantdetailsedit = (props) => {
 
   useEffect(() => {
     console.log(inputs)
-    axios.get("http://localhost:3005/pview")
+    axios.get(baseurl+"/plantdetails/pview")
       .then(response => {
         console.log(response.data)
         setPlanttype(response.data)

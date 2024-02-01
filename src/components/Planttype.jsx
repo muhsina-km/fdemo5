@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import Sb from "./Sb";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import baseurl from "../Api";
 const { Option } = Select;
+
 
 const Planttype = () => {
   const [form] = Form.useForm();
@@ -22,7 +24,7 @@ const Planttype = () => {
   const saveData = () => {
     console.log(ptype);
     axios
-      .post("http://localhost:3005/ptnew", ptype)
+      .post(baseurl+"/planttype/ptnew", ptype)
       .then((response) => {
         alert("Record saved");
       })
@@ -37,7 +39,7 @@ const Planttype = () => {
      <Sidebar/>
      
       <h1 style={{ textAlign: 'center', marginTop: '70px', marginLeft: '220px' }}>
-        Plant Type
+        To Add Plant Type
       </h1>
 
       <Card
@@ -62,9 +64,9 @@ const Planttype = () => {
               Plant Type </span>}
             >
             <Input
-            name="plantid"
+            name="Planttype"
               value={ptype.Planttype}
-              onChange={(e) => ptypehandler(e.target.value, "Planttype")}
+              onChange={(value) => ptypehandler(value, "Planttype")}
             />
           </Form.Item>
 
@@ -72,15 +74,14 @@ const Planttype = () => {
             label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
               Status </span>}
             >
-            <Select
-            name="status"
+            <Select name="Status"
               value={ptype.Status}
-              onChange={(value) => ptypehandler(value, "Status")}>
+              onChange={value => ptypehandler({target : {value, name: "Status"}})}>
               <Option value="ACTIVE">ACTIVE</Option>
               <Option value="INACTIVE">INACTIVE</Option>
             </Select>
           </Form.Item>
-
+       
           <Form.Item wrapperCol={{ offset: 12, span: 16 }}
             onClick={saveData}>
             <Button htmlType="submit">

@@ -8,6 +8,7 @@ import Sb from './Sb';
 import { Card } from 'antd';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import baseurl from "../Api";
 
 const Plantview = () => {
     var [ptype, setPtype]  = useState([]);
@@ -15,7 +16,7 @@ const Plantview = () => {
     var [update, setUpdate] = useState(false);
 
     useEffect(() => {
-        axios.get("http://localhost:3005/ptview")
+        axios.get(baseurl+"/planttype/ptview")
             .then(response => {
                 console.log(response.data)
                 setPtype(response.data)
@@ -25,7 +26,7 @@ const Plantview = () => {
 
     const deletevalues = (id) => {
         console.log("Deleted", id)
-        axios.put("http://localhost:3005/ptupdatestatus/" + id)
+        axios.put(baseurl+"/planttype/ptupdatestatus/" + id)
             .then((response) => {
                 alert("DELETED")
                 window.location.reload(false);
@@ -45,7 +46,7 @@ const Plantview = () => {
             <Sidebar/>
 
             <h1 style={{ textAlign: 'center', marginTop: '100px', marginLeft: '100px', color: '#ffffff' }}>
-        Plant Details View
+        Plant Type View
       </h1>
 
     <Card

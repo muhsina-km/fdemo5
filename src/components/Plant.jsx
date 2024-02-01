@@ -7,6 +7,8 @@ import { UploadOutlined } from '@ant-design/icons';
 import Sb from './Sb';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import baseurl from "../Api";
+
 
 
 const { Option } = Select;
@@ -21,15 +23,14 @@ const Plant = () => {
   })
 
   var [planttype, setPlanttype] = useState([]);
-  var [selectedimage, setSelectedimage] = useState([]);
+  var [selectedimage, setSelectedimage] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("fnd")
-    axios.get ('http://localhost:3005/ptview')
+
+    axios.get (baseurl+"/planttype/ptview")
       .then(response => {
-        console.log(response.data)
         setPlanttype(response.data)
       })
       .catch(err => console.log(err))
@@ -42,18 +43,20 @@ const Plant = () => {
   }
 
   const handleImage = (info) => {
-    console.log(info.file);
-    if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-    setSelectedimage(info.file);
+    // console.log(info.file);
+    // if (info.file.status === 'done') {
+    //   message.success(`${info.file.name} file uploaded successfully`);
+    // } else if (info.file.status === 'error') {
+    //   message.error(`${info.file.name} file upload failed.`);
+    // }
+    const file =info.target.files[0];
+    setSelectedimage(file);
+    inputs.plantphoto =file;
   };
   
 
-  const savedata = (blabla) => {
-    console.log(blabla)
+  const savedata = () => {
+    console.log("js"+setSelectedimage)
     const formdata = new FormData();
     formdata.append('plantid', inputs.plantid);
     formdata.append('plantname', inputs.plantname);
@@ -72,7 +75,7 @@ const Plant = () => {
   
     console.log(formdata);
   
-    fetch('http://localhost:3005/pnew', {
+    fetch(baseurl+"/plantdetails/pnew", {
       method: 'post',
       body: formdata,
     })
@@ -142,7 +145,7 @@ const Plant = () => {
           >
             <Select 
             name="planttypeid"
-            value={inputs.planttypeid} onChange={inputHandler}>
+            value={inputs.planttypeid}  onChange={value => inputHandler({target : {value, name: "planttypeid"}})}>
               {
               planttype.map((value,index) => {
                 return(
@@ -170,7 +173,7 @@ const Plant = () => {
            <Select 
             name="size"
             value={inputs.size}
-            onChange={inputHandler}>
+            onChange={value => inputHandler({target : {value, name: "size"}})}>
               <Option value="small">Small</Option>
               <Option value="medium">Medium</Option>
               <Option value="large">Large</Option>
@@ -212,14 +215,16 @@ const Plant = () => {
           label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
           Image </span>}
           >
-            <Upload
+            {/* <Upload
             name="plantphoto"
               customRequest={() => {}} // You need to implement the file upload logic here
               onChange={handleImage}
               showUploadList={false}
             >
-              <Button icon={<UploadOutlined />}>Upload Image</Button>
-            </Upload>
+              <Button icon
+              ={<UploadOutlined />}>Upload Image</Button>
+            </Upload> */}
+            <input type="file" onChange={handleImage}/>
           </Form.Item>
 
           <Form.Item
@@ -229,7 +234,7 @@ const Plant = () => {
             <Select 
             name="status"
             value={inputs.status}
-            onChange={(value) => setInputs((prevInputs) => ({ ...prevInputs, status: value }))}>
+            onChange={value => inputHandler({target : {value, name: "status"}})}>
               <Option value="ACTIVE">ACTIVE</Option>
               <Option value="INACTIVE">INACTIVE</Option>
             </Select>

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Input, Select, Card, Form } from "antd";
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import baseurl from "../Api";
 const { Option } = Select;
 
 
@@ -12,22 +13,22 @@ const Plantedit = (props) => {
    
     const [form] = Form.useForm();
 
-        var[ptype,setPtype]=useState(props.data)
+    var[ptype,setPtype]=useState(props.data)
     
     const navigate =useNavigate();
     
     
-    const ptypehandler =(event)=>{
-        const {name,value}=event.target
-        setPtype((ptype)=>({...ptype,[name]:value}))
-        console.log(ptype)
-    }  
+    const ptypehandler = (event) => {
+      const {name, value} = event.target
+    setPtype((ptype) => ({ ...ptype, [name]: value }));
+    console.log(ptype)
+    };
      const saveData =()=>{
         
-        if
-        (props.method==="put")
+        if(props.method==="put")
         {
-            axios.put("http://localhost:3005/ptedit/"+ptype._id,ptype)
+          console.log("asd")
+            axios.put(baseurl+"/planttype/ptedit/"+ptype._id,ptype)
             .then((response)=>{
                 alert("UPDATED")
                 window.location.reload(false)
@@ -42,7 +43,7 @@ const Plantedit = (props) => {
         <Sidebar/>
 
         <h1 style={{ textAlign: 'center', marginTop: '70px', marginLeft: '220px' }}>
-        Plant Type
+        To Update Plant Type
       </h1>
 
     {/* <TextField label="Plant Type" name="Planttype" value={ptype.Planttype} onChange={ptypehandler}/> */}
@@ -72,29 +73,21 @@ const Plantedit = (props) => {
               Plant Type </span>}
             >
             <Input
-            name="plantid"
+            name="Planttype"
               value={ptype.Planttype}
               onChange={ptypehandler}
             />
           </Form.Item>
 
 
-    {/* status &nbsp;&nbsp;&nbsp;
-    <select name="Status" value={ptype.Status} onChange={ptypehandler}>
-        <option value="ACTIVE">ACTIVE</option>
-        <option value="INACTIVE">INACTIVE</option>
-    </select>
-    <br></br>
-    <button onClick={saveData} >SUBMIT</button> */}
 
 <Form.Item
             label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
               Status </span>}
             >
-            <Select
-            name="status"
+              <Select name="Status"
               value={ptype.Status}
-              onChange={ptypehandler}>
+              onChange={value => ptypehandler({target : {value, name: "Status"}})}>
               <Option value="ACTIVE">ACTIVE</Option>
               <Option value="INACTIVE">INACTIVE</Option>
             </Select>
@@ -102,7 +95,7 @@ const Plantedit = (props) => {
 
           <Form.Item wrapperCol={{ offset: 12, span: 16 }}
             onClick={saveData}>
-            <Button htmlType="submit">
+            <Button htmlType="submit" >
               Save
             </Button>
           </Form.Item>
