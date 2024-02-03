@@ -36,7 +36,7 @@ const Planttype = () => {
     <div className='background-4'>
 
      <Navbar/>
-     <Sidebar/>
+     {/* <Sidebar/> */}
      
       <h1 style={{ textAlign: 'center', marginTop: '70px', marginLeft: '220px' }}>
         To Add Plant Type

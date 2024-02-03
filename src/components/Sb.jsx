@@ -6,8 +6,12 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import Navbar from './Navbar';
-import {Link} from 'react-router-dom';
-const { Header, Sider } = Layout;
+import {Link, useNavigate} from 'react-router-dom';
+import Planttype from './Planttype';
+import Plant from './Plant';
+import Plantview from './Plantview';
+import Plantdetailsview from './Plantdetailsview';
+const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, href, children, onClick) {
   return {
@@ -25,22 +29,43 @@ function getItem(label, key, icon, href, children, onClick) {
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [current, setCurrent] = useState('home');
+  const navigate = useNavigate();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
+  const renderCurrentView = () => {
+    switch (current) {
+      case "planttype":
+        return <Planttype method='post'/>;
+      case "plant":
+        return <Plant/>;
+      case "planttypeview":
+        return <Plantview method='get'/>;
+      case "plantdetailsview":
+        return <Plantdetailsview method='get'/>;
+      case "home":
+        return
+      default:
+        return null;
+    }
+  };
   const handleClick = (key) => {
+    if (key === "home") {
+      navigate("/main");
+    }
     console.log(key);
+    setCurrent(key);
   }
   const items = [
     getItem('Home', '1', <HomeOutlined />, '/home', null, () => handleClick("home")),
     getItem('Registrations', 'sub1',  <FormOutlined />, null, [
-      getItem('Plant Type', '4', null, '/planttype'),
-      getItem('Plant Details', '3', null, '/plant'),
+      getItem('Plant Type', '4', null, '/planttype', null, () => handleClick("planttype")),
+      getItem('Plant Details', '3', null, '/plant', null, () => handleClick("plant")),
     ]),
     getItem('View', 'sub2', <EyeOutlined />, null, [
-      getItem('Plant Type View', '8', null, '/planttypeview'),
-      getItem('Plant Details View', '6', null, '/plantdetailsview'),
+      getItem('Plant Type View', '8', null, '/planttypeview', null, () => handleClick("planttypeview")),
+      getItem('Plant Details View', '6', null, '/plantdetailsview', null, () => handleClick("plantdetailsview")),
     ]),
   ];
   return (
@@ -73,8 +98,10 @@ const App = () => {
                     title={item.label}
                   >
                     {item.children.map((subItem) => (
-                      <Menu.Item key={subItem.key}>
-                        <Link href={subItem.href}>{subItem.label}</Link>
+                      <Menu.Item key={subItem.key} onClick={subItem.onClick}>
+                        {/* <Link href={subItem.href}> */}
+                          {subItem.label}
+                          {/* </Link> */}
                       </Menu.Item>
                     ))}
                   </Menu.SubMenu>
@@ -91,6 +118,9 @@ const App = () => {
             })}
           </Menu>
         </Sider>
+        <Content>
+          {renderCurrentView()}
+        </Content>
       </Layout>
     </Layout>
   );

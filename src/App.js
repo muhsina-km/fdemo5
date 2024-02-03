@@ -22,7 +22,9 @@ function App() {
       {/* <Route path='/' element={<Sb/>}></Route> */}
 
         <Route path='/' element={<Login/>}></Route>
-        <Route path='/home' element={<Welcomepage/>}></Route>
+
+        <Route path='/main' element={<Home></Home>}></Route>
+        <Route path="/home" element={<Sb></Sb>}></Route>
         <Route path="/plant" element={<Plant method='post'/>}></Route>
         <Route path="/plantdetailsview" element={<Plantdetailsview method='get'/>}></Route>
         <Route path="/Planttype" element={<Planttype method='post'/>}></Route>

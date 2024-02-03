@@ -56,7 +56,7 @@ const Plantdetailsview = () => {
     <div className='background-table'>
 
       <Navbar />
-      <Sidebar/>
+      {/* <Sidebar/> */}
 
       <h1 style={{ textAlign: 'center', marginTop: '100px', marginLeft: '100px', color: '#ffffff' }}>
         Plant Details View

@@ -19,7 +19,9 @@ const Sidebar = () => {
             </div>
             <ul>
                 <a href='/planttype'><li>Plant Type</li></a>
-                <a href='/plant'><li>Plant Details</li></a>
+                <a href='/plant'><li>
+                    Plant Details
+                    </li></a>
             </ul>
             <div className='list-item'>
                 <VisibilityIcon className='icon'/> View

@@ -68,7 +68,7 @@ const Plantdetailsedit = (props) => {
   return (
     <div>
       <Navbar />
-      <Sidebar />
+      {/* <Sidebar /> */}
       <Card sx={{ minWidth: 500 }}>
         <CardContent>
           <center><h1>Plant Details</h1>
