@@ -6,37 +6,43 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import Navbar from './Navbar';
-
+import {Link} from 'react-router-dom';
 const { Header, Sider } = Layout;
 
-function getItem(label, key, icon, href, children) {
+function getItem(label, key, icon, href, children, onClick) {
   return {
     key,
     icon,
     href,
     children,
     label,
+    onClick,
   };
 }
 
-const items = [
-  getItem('Home', '1', <HomeOutlined />, '/home'),
-  getItem('Registrations', 'sub1',  <FormOutlined />, null, [
-    getItem('Plant Type', '4', null, '/planttype'),
-    getItem('Plant Details', '3', null, '/plant'),
-  ]),
-  getItem('View', 'sub2', <EyeOutlined />, null, [
-    getItem('Plant Type View', '8', null, '/planttypeview'),
-    getItem('Plant Details View', '6', null, '/plantdetailsview'),
-  ]),
-];
+
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [current, setCurrent] = useState('home');
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
+  const handleClick = (key) => {
+    console.log(key);
+  }
+  const items = [
+    getItem('Home', '1', <HomeOutlined />, '/home', null, () => handleClick("home")),
+    getItem('Registrations', 'sub1',  <FormOutlined />, null, [
+      getItem('Plant Type', '4', null, '/planttype'),
+      getItem('Plant Details', '3', null, '/plant'),
+    ]),
+    getItem('View', 'sub2', <EyeOutlined />, null, [
+      getItem('Plant Type View', '8', null, '/planttypeview'),
+      getItem('Plant Details View', '6', null, '/plantdetailsview'),
+    ]),
+  ];
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ background: colorBgContainer, padding: 0 }}>
@@ -68,15 +74,17 @@ const App = () => {
                   >
                     {item.children.map((subItem) => (
                       <Menu.Item key={subItem.key}>
-                        <a href={subItem.href}>{subItem.label}</a>
+                        <Link href={subItem.href}>{subItem.label}</Link>
                       </Menu.Item>
                     ))}
                   </Menu.SubMenu>
                 );
               } else {
                 return (
-                  <Menu.Item key={item.key} icon={item.icon} style={{ marginBottom: '8px', marginTop: '10px' }}>
-                    <a href={item.href}>{item.label}</a>
+                  <Menu.Item key={item.key} icon={item.icon} onClick={item.onClick} style={{ marginBottom: '8px', marginTop: '10px' }}>
+                    {/* <Link href={item.href}> */}
+                      {item.label}
+                      {/* </Link> */}
                   </Menu.Item>
                 );
               }

@@ -18,7 +18,7 @@ const Plantdetailsedit = (props) => {
 
   useEffect(() => {
     console.log(inputs)
-    axios.get(baseurl+"/plantdetails/pview")
+    axios.get(baseurl + "/plantdetails/pview")
       .then(response => {
         console.log(response.data)
         setPlanttype(response.data)
@@ -67,11 +67,12 @@ const Plantdetailsedit = (props) => {
 
   return (
     <div>
-      <Navbar/>
-      <Sidebar/>
+      <Navbar />
+      <Sidebar />
       <Card sx={{ minWidth: 500 }}>
         <CardContent>
           <center><h1>Plant Details</h1>
+
             <form>
               Plant ID : <input type="text" name="plantid" id='p1' value={inputs.plantid} onChange={inputHandler} />
               <br /><br />
@@ -91,7 +92,7 @@ const Plantdetailsedit = (props) => {
               <br /><br />
               Size :
               <select name='size' value={inputs.size} onChange={inputHandler}>
-              <option value="small">Small</option>
+                <option value="small">Small</option>
                 <option value="medium">Medium</option>
                 <option value="large">Large</option>
               </select>

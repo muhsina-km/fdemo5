@@ -95,7 +95,7 @@ const Plant = () => {
     <div className='background-4'>
 
       <Navbar/>
-      <Sidebar/>
+      <Sb/>
 
       <h1 style={{ textAlign: 'center', marginTop: '12px', marginLeft: '220px' }}>
         Plant Details
