@@ -123,7 +123,11 @@ const App = () => {
             })}
           </Menu>
         </Sider>
-        <Content>
+        <Content style={{
+            position: 'relative',
+            height: '100vh',
+            overflow: 'auto',
+          }}>
           {renderCurrentView()}
         </Content>
       </Layout>

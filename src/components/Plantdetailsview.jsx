@@ -80,11 +80,13 @@ const Plantdetailsview = () => {
       >
         Plant Details View
       </h1>
-
       <Card
         className="background-2"
         bordered={true}
         style={{
+          position: 'relative',
+            height: '100vh',
+            overflow: 'scroll',
           marginTop: "-0.1%",
           marginBottom: "2%",
           marginLeft: "20%",
