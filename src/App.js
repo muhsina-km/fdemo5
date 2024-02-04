@@ -23,10 +23,10 @@ function App() {
 
         <Route path='/main' element={<Home></Home>}></Route>
         <Route path="/home" element={<Sb></Sb>}></Route>
-        <Route path="/plant" element={<Plant method='post'/>}></Route>
-        <Route path="/plantdetailsview" element={<Plantdetailsview method='get'/>}></Route>
-        <Route path="/Planttype" element={<Planttype method='post'/>}></Route>
-        <Route path="/planttypeview" element={<Plantview method='get'/>}></Route>
+        <Route path="/plant" element={<Sb></Sb>}></Route>
+        <Route path="/plantdetailsview" element={<Sb></Sb>}></Route>
+        <Route path="/planttype" element={<Sb></Sb>}></Route>
+        <Route path="/planttypeview" element={<Sb></Sb>}></Route>
       </Routes>
       </BrowserRouter>
 

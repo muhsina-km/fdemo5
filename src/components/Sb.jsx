@@ -9,8 +9,10 @@ import Navbar from './Navbar';
 import {Link, useNavigate} from 'react-router-dom';
 import Planttype from './Planttype';
 import Plant from './Plant';
+import { useLocation } from 'react-router-dom';
 import Plantview from './Plantview';
 import Plantdetailsview from './Plantdetailsview';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, href, children, onClick) {
@@ -27,6 +29,8 @@ function getItem(label, key, icon, href, children, onClick) {
 
 
 const App = () => {
+  const location = useLocation();
+  console.log(location.pathname);
   const [collapsed, setCollapsed] = useState(false);
   const [current, setCurrent] = useState('home');
   const navigate = useNavigate();
@@ -35,22 +39,23 @@ const App = () => {
   } = theme.useToken();
 
   const renderCurrentView = () => {
-    switch (current) {
-      case "planttype":
+    switch (location.pathname) {
+      case "/planttype":
         return <Planttype method='post'/>;
-      case "plant":
+      case "/plant":
         return <Plant/>;
-      case "planttypeview":
+      case "/planttypeview":
         return <Plantview method='get'/>;
-      case "plantdetailsview":
+      case "/plantdetailsview":
         return <Plantdetailsview method='get'/>;
-      case "home":
+      case "/home":
         return
       default:
         return null;
     }
   };
   const handleClick = (key) => {
+    navigate(`/${key}`, { replace: true });
     if (key === "home") {
       navigate("/main");
     }
