@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import axios from 'axios';
 import Navbar from './Navbar';
+import './Main.css';
 import Sidebar from './Sidebar';
 import baseurl from "../Api";
+import { Button, Form, Input, Select } from 'antd';
+import HostImg from './widgets/HostImg';
 
 const Plantdetailsedit = (props) => {
 
   var [inputs, setInputs] = useState(props.data)
   var [selectedimage, setSelectedimage] = useState([]);
   var [planttype, setPlanttype] = useState([]);
-
+  const { Option } = Select;
+  const [form] = Form.useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(inputs)
-    axios.get(baseurl + "/plantdetails/pview")
+
+    axios.get (baseurl+"/planttype/ptview")
       .then(response => {
-        console.log(response.data)
         setPlanttype(response.data)
       })
       .catch(err => console.log(err))
@@ -32,91 +33,182 @@ const Plantdetailsedit = (props) => {
     console.log(inputs)
   }
 
-  const handleImage = (event) => {
-    const file = event.target.files[0];
-    setSelectedimage(file)
-    inputs.plantphoto = file;
+  const handleImage = (url) => {
+    inputs.plantphoto = url;
   }
 
-  const savedata = () => {
-    const formdata = new FormData();
-    formdata.append('plantid', inputs.plantid);
-    formdata.append('plantname', inputs.plantname);
-    formdata.append('planttype', inputs.planttype);
-    formdata.append('color', inputs.color);
-    formdata.append('size', inputs.size);
-    formdata.append('price', inputs.price);
-    formdata.append('description', inputs.description);
-    formdata.append('stock', inputs.stock);
-    formdata.append('status', inputs.status);
-    formdata.append('plantphoto', selectedimage);
-    // console.log(formdata);
+  const savedata = async () => {
     console.log(inputs);
-    // remove plant photo from inputs
-    delete inputs.plantphoto
-
-    const data1 = JSON.stringify(inputs)
+  
     try {
-      axios.put(`http://localhost:3005/ptedit/${inputs._id}`, data1)
+      const response = await axios.put(`${baseurl}/plantdetails/pedit/${inputs._id}`, inputs);
+      console.log(response.data);  // Assuming the server responds with relevant data upon success
+      // navigate('/plantdetailsview');
+    } catch (error) {
+      console.error(error);
+      // Handle error, show a message to the user, etc.
     }
-    catch (error) {
-      console.log(error)
-    }
-    // navigate('/plantdetailsview')
-  }
+  };
+  
 
   return (
-    <div>
+    <div className='background-4'>
       <Navbar />
+      <h1 style={{ textAlign: 'center', marginTop: '12px', marginLeft: '220px' }}>
+        Plant Details Edit
+      </h1>
+
       {/* <Sidebar /> */}
-      <Card sx={{ minWidth: 500 }}>
-        <CardContent>
-          <center><h1>Plant Details</h1>
+      <Card 
+      className='background-4'
+      bordered={true}
+      style={{ 
+        width: 500 ,
+        padding: 30,
+        borderRadius: 25,
+        backgroundColor: 'white',
+        border: "1px solid #ffffff",
+        height: 800,
+        marginTop: "-5%",
+        marginBottom: "2%",
+        marginLeft: "40%",
+        }}>
 
-            <form>
-              Plant ID : <input type="text" name="plantid" id='p1' value={inputs.plantid} onChange={inputHandler} />
-              <br /><br />
-              Plant Name : <input type="text" name="plantname" id="p2" value={inputs.plantname} onChange={inputHandler} />
-              <br /><br />
-              Plant Type :<select name="planttype" value={inputs.planttype} onChange={inputHandler}  >
-                {
-                  planttype.map((value, index) => {
-                    return (
-                      <option key={index} value={value._id}>{value.Pname}</option>
-                    )
-                  })
-                }
-              </select>
-              <br /><br />
-              Color : <input type="color" name="clr" id="p4" value={inputs.color} onChange={inputHandler} />
-              <br /><br />
-              Size :
-              <select name='size' value={inputs.size} onChange={inputHandler}>
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
-              </select>
-              <br /><br />
-              Price : <input type="number" name="price" id="p6" value={inputs.price} onChange={inputHandler} />
-              <br /><br />
-              Description : <textarea rows='4' name='description' id='p7' value={inputs.description} onChange={inputHandler} />
-              <br /><br />
-              Stock : <input type="number" name="stock" id="p8" value={inputs.stock} onChange={inputHandler} />
-              <br /><br />
-              Image : <input type="file" onChange={handleImage} />
-              <br /><br />
-              Status   &nbsp;
-              <select name='status' value={inputs.status} onChange={inputHandler}>
-                <option value="ACTIVE">ACTIVE</option>
-                <option value="INACTIVE">INACTIVE</option>
-              </select>
-              <br />
-              <br />
-              <Button variant='contained' onClick={savedata}>SAVE</Button>
-            </form>
-          </center>
+        <Form
+          form={form}
+          onFinish={savedata}
+          initialValues={inputs}
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 22 }}
+          colon={false}
+        >
+          <Form.Item 
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Plant Code </span>}
+          >
+            <Input  name="plantid"
+            value={inputs.plantid}
+            onChange={inputHandler} />
+          </Form.Item>
 
-        </CardContent>
+          <Form.Item
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Plant Name </span>} 
+          >
+            <Input 
+            name="plantname"
+            value={inputs.plantname}
+            onChange={inputHandler} />
+          </Form.Item>
+
+          <Form.Item
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Plant Type </span>}
+          >
+            <Select 
+            name="planttypeid"
+            value={inputs.planttypeid}  onChange={value => inputHandler({target : {value, name: "planttypeid"}})}>
+              {
+              planttype.map((value,index) => {
+                return(
+                <Option key={index} value={value._id}>{value.Planttype}</Option>
+                )
+                })
+              }
+            </Select>
+          </Form.Item>
+
+          <Form.Item 
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Color </span>}
+          >
+            <Input 
+            name="color"
+            value={inputs.color}
+            onChange={inputHandler} />
+          </Form.Item>
+
+          <Form.Item
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Size </span>}
+          >
+           <Select 
+            name="size"
+            value={inputs.size}
+            onChange={value => inputHandler({target : {value, name: "size"}})}>
+              <Option value="small">Small</Option>
+              <Option value="medium">Medium</Option>
+              <Option value="large">Large</Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item 
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Price </span>}
+         >
+            <Input 
+             name="price"
+             type="number" 
+            value={inputs.price}
+            onChange={inputHandler} />
+          </Form.Item>
+
+          <Form.Item 
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Description </span>}
+          >
+            <Input.TextArea rows={4} 
+            name="description"
+            value={inputs.description}
+            onChange={inputHandler} />
+          </Form.Item>
+
+          <Form.Item
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Stock </span>}
+         >
+            <Input type="number" 
+             name="stock"
+            value={inputs.stock}
+            onChange={inputHandler} />
+          </Form.Item>
+
+          <Form.Item
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Image </span>}
+          >
+            {/* <Upload
+            name="plantphoto"
+              customRequest={() => {}} // You need to implement the file upload logic here
+              onChange={handleImage}
+              showUploadList={false}
+            >
+              <Button icon
+              ={<UploadOutlined />}>Upload Image</Button>
+            </Upload> */}
+            <HostImg onUrlChange={handleImage} resetAfterUpload={true} />
+            {/* <input type="file" onChange={handleImage}/> */}
+          </Form.Item>
+
+          <Form.Item
+          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          Status </span>}
+          >
+            <Select
+            name="status"
+            value={inputs.status}
+            onChange={value => inputHandler({target : {value, name: "status"}})}>
+              <Option value="ACTIVE">ACTIVE</Option>
+              <Option value="INACTIVE">INACTIVE</Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ offset: 12, span: 16 }}>
+            <Button htmlType="submit">
+              Save
+            </Button>
+          </Form.Item>
+        </Form>
       </Card>
 
     </div>

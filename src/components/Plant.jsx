@@ -8,19 +8,19 @@ import Sb from './Sb';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import baseurl from "../Api";
+import HostImg from './widgets/HostImg';
 
 
 
 const { Option } = Select;
 
 const Plant = () => {
-
   const [form] = Form.useForm();
-  
+
   var [inputs, setInputs] = useState({
     "plantid": '', "plantname": '', "planttypeid": '', "color": '', "size": '',
-    "price": '', "description": '', "stock": '', "status": 'ACTIVE'
-  })
+    "price": '', "description": '', "stock": '', "status": 'ACTIVE', "plantphoto": "",
+  });
 
   var [planttype, setPlanttype] = useState([]);
   var [selectedimage, setSelectedimage] = useState(null);
@@ -43,6 +43,10 @@ const Plant = () => {
   }
 
   const handleImage = (info) => {
+    console.log(info)
+    inputs.plantphoto =info
+    setSelectedimage(info);
+    return
     // console.log(info.file);
     // if (info.file.status === 'done') {
     //   message.success(`${info.file.name} file uploaded successfully`);
@@ -56,38 +60,17 @@ const Plant = () => {
   
 
   const savedata = () => {
-    console.log("js"+setSelectedimage)
-    const formdata = new FormData();
-    formdata.append('plantid', inputs.plantid);
-    formdata.append('plantname', inputs.plantname);
-    formdata.append('planttypeid', inputs.planttypeid);
-    formdata.append('color', inputs.color);
-    formdata.append('size', inputs.size);
-    formdata.append('price', inputs.price);
-    formdata.append('description', inputs.description);
-    formdata.append('stock', inputs.stock);
-    formdata.append('status', inputs.status);
-  
-    // Append the file properly
-    if (selectedimage) {
-      formdata.append('plantphoto', selectedimage);
-    }
-  
-    console.log(formdata);
-  
-    fetch(baseurl+"/plantdetails/pnew", {
-      method: 'post',
-      body: formdata,
-    })
-      .then((response) => response.json())
+    axios.post(baseurl + '/plantdetails/pnew', inputs)
+      .then((response) => response.data)
       .then((data) => {
         alert('Record Saved');
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
-    navigate('/plantdetailsview');
+    // navigate('/plantdetailsview');
   };
+  
   
 
   return (
@@ -224,7 +207,8 @@ const Plant = () => {
               <Button icon
               ={<UploadOutlined />}>Upload Image</Button>
             </Upload> */}
-            <input type="file" onChange={handleImage}/>
+            <HostImg onUrlChange={handleImage} resetAfterUpload={true} />
+            {/* <input type="file" onChange={handleImage}/> */}
           </Form.Item>
 
           <Form.Item
