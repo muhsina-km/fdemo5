@@ -57,7 +57,7 @@ const App = () => {
   const handleClick = (key) => {
     navigate(`/${key}`, { replace: true });
     if (key === "home") {
-      navigate("/main");
+      navigate("/home");
     }
     console.log(key);
     setCurrent(key);
