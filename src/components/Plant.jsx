@@ -68,7 +68,7 @@ const Plant = () => {
       .catch((err) => {
         console.error(err);
       });
-    // navigate('/plantdetailsview');
+    navigate('/plantdetailsview');
   };
   
   
@@ -78,9 +78,8 @@ const Plant = () => {
     <div className='background-4'>
 
       <Navbar/>
-      {/* <Sb/> */}
 
-      <h1 style={{ textAlign: 'center', marginTop: '12px', marginLeft: '220px' }}>
+      <h1 style={{ textAlign: 'center', marginTop: '-160px', marginLeft: '50px' }}>
         Plant Details
       </h1>
 
@@ -90,9 +89,9 @@ const Plant = () => {
       style={{ 
         width: 500 ,
         height: 800,
-        marginTop: "-5%",
-        marginBottom: "2%",
-        marginLeft: "40%",
+        marginTop: "-28%",
+        marginBottom: "1%",
+        marginLeft: "28%",
         }}>
 
         <Form

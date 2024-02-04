@@ -46,7 +46,6 @@ const Plantedit = (props) => {
         To Update Plant Type
       </h1>
 
-    {/* <TextField label="Plant Type" name="Planttype" value={ptype.Planttype} onChange={ptypehandler}/> */}
     <br></br>
     <br></br>
 

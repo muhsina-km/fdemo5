@@ -18,8 +18,6 @@ function App() {
       
       <BrowserRouter>
       <Routes>
-       
-      {/* <Route path='/' element={<Sb/>}></Route> */}
 
         <Route path='/' element={<Login/>}></Route>
 
