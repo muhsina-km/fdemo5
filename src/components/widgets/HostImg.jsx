@@ -32,7 +32,7 @@ const HostImg = ({ onUrlChange, resetAfterUpload }) => {
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await axios.post('http://localhost:3001/utils/uploadimg', formData, {
+      const response = await axios.post(`http://localhost:4005/plantdetails/uploadimg`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
