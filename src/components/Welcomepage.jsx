@@ -10,6 +10,8 @@ const Welcomepage = () => {
 
       <Navbar/>
       <Sidebar/>
+
+      {/* <h1>hello</h1> */}
      
     </div>
   )
