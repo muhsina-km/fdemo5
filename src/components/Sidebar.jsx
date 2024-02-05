@@ -1,5 +1,4 @@
 import React from 'react';
-import './Sidebar.css';
 import HomeIcon from '@mui/icons-material/Home';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import VisibilityIcon from '@mui/icons-material/Visibility';
