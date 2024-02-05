@@ -9,6 +9,7 @@ import Plantdetailsview from './components/Plantdetailsview';
 import Sb from './components/Sb';
 import Planttype from './components/Planttype';
 import Plantview from './components/Plantview';
+import Rerouter from './components/tools/Rerouter';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 
         {/* <Route path='/main' element={<Home></Home>}></Route> */}
         <Route path="/home" element={<Sb></Sb>}></Route>
+        <Route path="/rerouter" element={<Rerouter></Rerouter>}></Route>
         <Route path="/plant" element={<Sb></Sb>}></Route>
         <Route path="/plantdetailsview" element={<Sb></Sb>}></Route>
         <Route path="/planttype" element={<Sb></Sb>}></Route>
