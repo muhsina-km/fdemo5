@@ -43,7 +43,8 @@ const Plantdetailsedit = (props) => {
     try {
       const response = await axios.put(`${baseurl}/plantdetails/pedit/${inputs._id}`, inputs);
       console.log(response.data);  // Assuming the server responds with relevant data upon success
-      // navigate('/plantdetailsview');
+      alert("UPDATED")
+      navigate('/rerouter');
     } catch (error) {
       console.error(error);
       // Handle error, show a message to the user, etc.
