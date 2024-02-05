@@ -119,6 +119,7 @@ const Plantdetailsedit = (props) => {
             </Select>
           </Form.Item>
 
+
           <Form.Item 
           label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
           Color </span>}
