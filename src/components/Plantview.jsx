@@ -45,7 +45,7 @@ const Plantview = () => {
             <Navbar/>
             {/* <Sidebar/> */}
 
-            <h1 style={{ textAlign: 'center', marginTop: '100px', marginLeft: '100px', color: '#ffffff' }}>
+            <h1 style={{ textAlign: 'center', marginTop: '15px', marginLeft: '1%', color: '#ffffff' }}>
         Plant Type View
       </h1>
 
@@ -56,9 +56,9 @@ const Plantview = () => {
         position: 'relative',
             height: '100vh',
             overflow: 'scroll',
-        marginTop: "-0.1%",
+        marginTop: "-0.1px",
         marginBottom: "2%",
-        marginLeft:'20%',
+        marginLeft:'5%',
         marginRight:'5%',
         }}>
 

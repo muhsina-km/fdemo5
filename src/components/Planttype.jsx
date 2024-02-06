@@ -37,7 +37,7 @@ const Planttype = () => {
 
      <Navbar/>
      
-      <h1 style={{ textAlign: 'center', marginTop: '70px', marginLeft: '220px' }}>
+      <h1 style={{ textAlign: 'center', marginTop: '-310px', marginLeft: '50px' }}>
         To Add Plant Type
       </h1>
 
@@ -47,9 +47,9 @@ const Planttype = () => {
         style={{
           width: 500,
           height: 300,
-          marginTop: "-5px",
-          marginBottom: "50%",
-          marginLeft: "40%",
+          marginTop: "-600px",
+          marginBottom: "1%",
+          marginLeft: "27%",
         }}>
 
         <Form

@@ -96,7 +96,7 @@ const Plantdetailsview = () => {
             overflowY: 'auto',
           marginTop: "-0.1%",
           marginBottom: "2%",
-          marginLeft: "2%",
+          marginLeft: "3%",
           marginRight: "3%",
         }}
       >
