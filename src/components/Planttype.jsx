@@ -36,7 +36,6 @@ const Planttype = () => {
     <div className='background-4'>
 
      <Navbar/>
-     {/* <Sidebar/> */}
      
       <h1 style={{ textAlign: 'center', marginTop: '70px', marginLeft: '220px' }}>
         To Add Plant Type
@@ -60,7 +59,7 @@ const Planttype = () => {
           colon={false}
         >
           <Form.Item
-            label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+            label={<span style={{ color: '#000000', fontFamily: 'cursive', fontSize: '16px' }}>
               Plant Type </span>}
             >
             <Input
@@ -71,7 +70,7 @@ const Planttype = () => {
           </Form.Item>
 
           <Form.Item
-            label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+            label={<span style={{ color: '#000000', fontFamily: 'cursive', fontSize: '16px' }}>
               Status </span>}
             >
             <Select name="Status"

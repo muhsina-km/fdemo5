@@ -83,13 +83,13 @@ const App = () => {
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
-          style={{ backgroundColor: "#891545", width: collapsed ? '80px' : '200px', overflow: 'hidden', }}
+          style={{ backgroundColor: "#001932", width: collapsed ? '80px' : '200px', overflow: 'hidden', }}
         >
           <div className="demo-logo-vertical" />
           <Menu
             theme="light"
             mode="inline"
-            style={{ background: '#891545', color: '#ffffff', fontFamily : 'Cursive' }}
+            style={{ background: '#001932', color: '#ffffff', fontFamily : 'Cursive' }}
             selectedKeys={[]}
             // Remove default focus styles
             itemStyle={{ outline: 'none' }}

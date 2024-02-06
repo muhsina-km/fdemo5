@@ -10,7 +10,7 @@ const Navbar = () => {
 
     <Box>
       <AppBar position="fixed" 
-      sx={{ backgroundColor : '#891545' }}>
+      sx={{ backgroundColor : '#001932' }}>
         <Toolbar>
         <LocalFloristIcon/> &nbsp;
           <Typography variant="h6" 
