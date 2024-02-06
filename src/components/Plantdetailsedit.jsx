@@ -4,7 +4,6 @@ import Card from '@mui/material/Card';
 import axios from 'axios';
 import Navbar from './Navbar';
 import './Main.css';
-import Sidebar from './Sidebar';
 import baseurl from "../Api";
 import { Button, Form, Input, Select } from 'antd';
 import HostImg from './widgets/HostImg';
@@ -55,11 +54,10 @@ const Plantdetailsedit = (props) => {
   return (
     <div className='background-4'>
       <Navbar />
-      <h1 style={{ textAlign: 'center', marginTop: '12px', marginLeft: '220px' }}>
-        Plant Details Edit
+      <h1 style={{ textAlign: 'center', marginTop: '-120px', marginLeft: '2px' }}>
+        To Update Plant Details
       </h1>
 
-      {/* <Sidebar /> */}
       <Card 
       className='background-4'
       bordered={true}
@@ -70,9 +68,9 @@ const Plantdetailsedit = (props) => {
         backgroundColor: 'white',
         border: "1px solid #ffffff",
         height: 800,
-        marginTop: "-5%",
+        marginTop: "-20%",
         marginBottom: "2%",
-        marginLeft: "40%",
+        marginLeft: "25%",
         }}>
 
         <Form

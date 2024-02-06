@@ -4,7 +4,6 @@ import { Button, Input, Select, Card, Form } from "antd";
 import { useNavigate } from "react-router-dom";
 import Sb from "./Sb";
 import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
 import baseurl from "../Api";
 const { Option } = Select;
 

@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Button, Input, Select, Card, Form } from "antd";
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
 import baseurl from "../Api";
 const { Option } = Select;
 
@@ -40,9 +39,8 @@ const Plantedit = (props) => {
   return (
     <div className='background-4'>
         <Navbar/>
-        <Sidebar/>
-
-        <h1 style={{ textAlign: 'center', marginTop: '70px', marginLeft: '220px' }}>
+    
+        <h1 style={{ textAlign: 'center', marginTop: '-135px', marginLeft: '10px' }}>
         To Update Plant Type
       </h1>
 
@@ -55,9 +53,9 @@ const Plantedit = (props) => {
         style={{
           width: 500,
           height: 300,
-          marginTop: "-15px",
+          marginTop: "-450px",
           marginBottom: "50%",
-          marginLeft: "40%",
+          marginLeft: "25%",
         }}>
 
         <Form

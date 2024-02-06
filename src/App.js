@@ -1,9 +1,7 @@
-
 import Login from './components/Login';
 import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Welcomepage from './components/Welcomepage';
-import Sidebar from './components/Sidebar';
 import Plant from './components/Plant';
 import Plantdetailsview from './components/Plantdetailsview';
 import Sb from './components/Sb';

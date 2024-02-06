@@ -7,7 +7,6 @@ import Plantedit from './Plantedit';
 import Sb from './Sb';
 import { Card } from 'antd';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
 import baseurl from "../Api";
 
 const Plantview = () => {
@@ -43,7 +42,6 @@ const Plantview = () => {
         <div className='background-table'>
 
             <Navbar/>
-            {/* <Sidebar/> */}
 
             <h1 style={{ textAlign: 'center', marginTop: '15px', marginLeft: '1%', color: '#ffffff' }}>
         Plant Type View

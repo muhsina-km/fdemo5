@@ -6,7 +6,6 @@ import { Button, Card, Form, Input, Select, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Sb from './Sb';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
 import baseurl from "../Api";
 import HostImg from './widgets/HostImg';
 

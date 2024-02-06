@@ -14,7 +14,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import Plantdetailsedit from "./Plantdetailsedit";
 import { Buffer } from "buffer";
 import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
 import { Modal, Card, Image, Popconfirm, Alert, message, Tag } from "antd";
 import baseurl from "../Api";
 import { CheckCircleOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
@@ -74,7 +73,6 @@ const Plantdetailsview = () => {
     <div className="background-table">
       {contextHolder}
       <Navbar />
-      {/* <Sidebar/> */}
 
       <h1
         style={{
