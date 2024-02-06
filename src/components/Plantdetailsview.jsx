@@ -33,6 +33,7 @@ const Plantdetailsview = () => {
   };
 
   var [Plantdetailsview, setPlantdetailsview] = useState([]);
+  const [planttype, setPlanttype] = useState([]);
   var [selected, setSelected] = useState();
   var [update, setUpdate] = useState(false);
   const [trigger, setTrigger] = useState(false);
@@ -45,6 +46,11 @@ const Plantdetailsview = () => {
         setPlantdetailsview(response.data);
       })
       .catch((err) => console.log(err));
+      axios.get(baseurl + "/planttype/ptview")
+      .then((response) => {
+        console.log(response.data);
+        setPlanttype(response.data);
+      })
   }, [trigger]);
 
   const deletevalues = (id) => {
@@ -115,11 +121,12 @@ const Plantdetailsview = () => {
 
             <TableBody>
               {Plantdetailsview.map((value, index) => {
+                let plantType = planttype.find(type => type._id === value.planttypeid);
                 return (
                   <TableRow key={index}>
                     <TableCell>{value.plantid}</TableCell>
                     <TableCell>{value.plantname}</TableCell>
-                    <TableCell>{value.Planttype}</TableCell>
+                    <TableCell>{plantType ? plantType.Planttype : "N/A"}</TableCell>
                     <TableCell>{value.color}</TableCell>
                     <TableCell>{value.size}</TableCell>
                     <TableCell>{value.price}</TableCell>
