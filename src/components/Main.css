@@ -64,16 +64,29 @@
   }
 
   .background-4 {
-    background-image: url("https://i.pinimg.com/originals/ec/d0/2c/ecd02cb57be158a9a7f90a0f06b17181.jpg");
+    background-image: url("https://images.unsplash.com/photo-1487700160041-babef9c3cb55?q=80&w=1452&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-size: cover; /* Adjust as needed: 'cover', 'contain', etc. */
     background-position: center; /* Adjust as needed: 'center', 'top', 'bottom', etc. */
     background-repeat: no-repeat;
-    height: 180vh; /* Set the height based on your design */
+    height: 100vh; 
     display: grid;
+    overflow: auto;
+    background-attachment: fixed;
     flex-direction: column;
     font-family: cursive; 
-    color: #ffffff; 
+    color: #2C3A13; 
   }
+
+  .glasscard {
+    color: #2C3A13;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.226);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
+
 
   .background-table {
     background-image: url('https://i.pinimg.com/564x/28/c8/bf/28c8bf8fb717ce0e8ecf2d89edad3f80.jpg');

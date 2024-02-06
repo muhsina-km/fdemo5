@@ -75,24 +75,20 @@ const Plant = () => {
   return (
 
     <div className='background-4'>
-
-      <Navbar/>
-
-      <h1 style={{ textAlign: 'center', marginTop: '-160px', marginLeft: '50px' }}>
+      <div>
+      <h1 style={{ textAlign: 'center', marginLeft: '50px' }}>
        To Add Plant Details
       </h1>
 
       <Card 
-      className='background-4'
+      className='glasscard'
       bordered={true}
       style={{ 
         width: 500 ,
         height: 800,
-        marginTop: "-28%",
         marginBottom: "1%",
         marginLeft: "28%",
-        }}>
-
+      }}>
         <Form
           form={form}
           onFinish={savedata}
@@ -102,7 +98,7 @@ const Plant = () => {
           colon={false}
         >
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Plant Code </span>}
           >
             <Input  name="plantid"
@@ -111,7 +107,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Plant Name </span>} 
           >
             <Input 
@@ -121,7 +117,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Plant Type </span>}
           >
             <Select 
@@ -138,7 +134,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Color </span>}
           >
             <Input 
@@ -148,7 +144,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Size </span>}
           >
            <Select 
@@ -162,7 +158,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Price </span>}
          >
             <Input 
@@ -173,7 +169,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Description </span>}
           >
             <Input.TextArea rows={4} 
@@ -183,7 +179,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Stock </span>}
          >
             <Input type="number" 
@@ -193,7 +189,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Image </span>}
           >
             {/* <Upload
@@ -210,7 +206,7 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Status </span>}
           >
             <Select 
@@ -229,6 +225,7 @@ const Plant = () => {
           </Form.Item>
         </Form>
       </Card>
+      </div>
       </div>
   )
 }

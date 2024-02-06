@@ -82,7 +82,7 @@ const Plantdetailsedit = (props) => {
           colon={false}
         >
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Plant Code </span>}
           >
             <Input  name="plantid"
@@ -91,7 +91,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Plant Name </span>} 
           >
             <Input 
@@ -101,7 +101,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Plant Type </span>}
           >
             <Select 
@@ -119,7 +119,7 @@ const Plantdetailsedit = (props) => {
 
 
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Color </span>}
           >
             <Input 
@@ -129,7 +129,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Size </span>}
           >
            <Select 
@@ -143,7 +143,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Price </span>}
          >
             <Input 
@@ -154,7 +154,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item 
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Description </span>}
           >
             <Input.TextArea rows={4} 
@@ -164,7 +164,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Stock </span>}
          >
             <Input type="number" 
@@ -174,7 +174,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Image </span>}
           >
             {/* <Upload
@@ -191,7 +191,7 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Status </span>}
           >
             <Select

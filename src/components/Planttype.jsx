@@ -33,20 +33,18 @@ const Planttype = () => {
 
   return (
     <div className='background-4'>
-
-     <Navbar/>
-     
-      <h1 style={{ textAlign: 'center', marginTop: '-310px', marginLeft: '50px' }}>
+      <h1 style={{ textAlign: 'center', marginTop:"7%" }}>
         To Add Plant Type
       </h1>
 
       <Card
-        className='background-4'
+        className='glasscard'
         bordered={true}
         style={{
+          padding: 30,
           width: 500,
+          marginTop: "-100px",
           height: 300,
-          marginTop: "-600px",
           marginBottom: "1%",
           marginLeft: "27%",
         }}>
@@ -58,7 +56,7 @@ const Planttype = () => {
           colon={false}
         >
           <Form.Item
-            label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+            label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
               Plant Type </span>}
             >
             <Input
@@ -69,7 +67,7 @@ const Planttype = () => {
           </Form.Item>
 
           <Form.Item
-            label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+            label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
               Status </span>}
             >
             <Select name="Status"
