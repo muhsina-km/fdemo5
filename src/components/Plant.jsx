@@ -79,7 +79,7 @@ const Plant = () => {
       <Navbar/>
 
       <h1 style={{ textAlign: 'center', marginTop: '-160px', marginLeft: '50px' }}>
-        Plant Details
+       To Add Plant Details
       </h1>
 
       <Card 
