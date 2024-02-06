@@ -37,23 +37,22 @@ const Plantedit = (props) => {
      }
      
   return (
-    <div className='background-4'>
-        <Navbar/>
+    <div 
+    className='background-4'
+    >
+        {/* <Navbar/> */}
     
-        <h1 style={{ textAlign: 'center', marginTop: '-135px', marginLeft: '10px' }}>
+        <h1 style={{ textAlign: 'center', marginLeft: '10px' }}>
         To Update Plant Type
       </h1>
 
-    <br></br>
-    <br></br>
-
     <Card
-        className='background-4'
+        className='glasscard'
         bordered={true}
         style={{
           width: 500,
           height: 300,
-          marginTop: "-450px",
+          // marginTop: "-450px",
           marginBottom: "50%",
           marginLeft: "25%",
         }}>
@@ -66,7 +65,7 @@ const Plantedit = (props) => {
         >
 
     <Form.Item
-            label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+            label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
               Plant Type </span>}
             >
             <Input
@@ -79,7 +78,7 @@ const Plantedit = (props) => {
 
 
 <Form.Item
-            label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
+            label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
               Status </span>}
             >
               <Select name="Status"

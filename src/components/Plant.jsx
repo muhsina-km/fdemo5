@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import './Main.css';
-import { Button, Card, Form, Input, Select, Upload, message } from 'antd';
+import { Button, Card, Checkbox, Form, Input, Select, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Sb from './Sb';
 import Navbar from './Navbar';
 import baseurl from "../Api";
 import HostImg from './widgets/HostImg';
-
+import ReactTextTransition, { presets } from "react-text-transition";
 
 
 const { Option } = Select;
@@ -40,6 +40,11 @@ const Plant = () => {
     setInputs((inputs) => ({ ...inputs, [name]: value }))
     console.log(inputs)
   }
+
+  const handleStatusChange = (e) => {
+    const newValue = e.target.checked ? 'ACTIVE' : 'INACTIVE';
+    inputHandler({ target: { value: newValue, name: 'status' } });
+  };
 
   const handleImage = (info) => {
     console.log(info)
@@ -86,7 +91,7 @@ const Plant = () => {
       style={{ 
         width: 500 ,
         height: 800,
-        marginBottom: "1%",
+        marginBottom: "10%",
         marginLeft: "28%",
       }}>
         <Form
@@ -208,14 +213,14 @@ const Plant = () => {
           <Form.Item
           label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Status </span>}
-          >
-            <Select 
+          ><ReactTextTransition springConfig={{ tension: 300, friction: 10 }}>
+            <Checkbox
             name="status"
-            value={inputs.status}
-            onChange={value => inputHandler({target : {value, name: "status"}})}>
-              <Option value="ACTIVE">ACTIVE</Option>
-              <Option value="INACTIVE">INACTIVE</Option>
-            </Select>
+            checked={inputs.status === "ACTIVE"}
+            // value={inputs.status === 'ACTIVE'}
+            onChange={handleStatusChange}/>
+            
+            {"  "}{inputs.status === 'INACTIVE' ? 'INACTIVE' : 'ACTIVE'}</ReactTextTransition>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 12, span: 16 }}>

@@ -68,7 +68,7 @@ const Plantdetailsedit = (props) => {
         backgroundColor: 'white',
         border: "1px solid #ffffff",
         height: 800,
-        marginTop: "-20%",
+        // marginTop: "-20%",
         marginBottom: "2%",
         marginLeft: "25%",
         }}>

@@ -53,9 +53,9 @@ const Plantview = () => {
       style={{ 
         position: 'relative',
             height: '100vh',
-            overflow: 'scroll',
+            overflowY: 'auto',
         marginTop: "-0.1px",
-        marginBottom: "2%",
+        marginBottom: "8%",
         marginLeft:'5%',
         marginRight:'5%',
         }}>

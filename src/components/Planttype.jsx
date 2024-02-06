@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Input, Select, Card, Form } from "antd";
+import { Button, Input, Select, Card, Form, Switch } from "antd";
 import { useNavigate } from "react-router-dom";
 import Sb from "./Sb";
 import Navbar from "./Navbar";
@@ -14,6 +14,14 @@ const Planttype = () => {
 
   const navigate = useNavigate();
 
+  const handleStatusChange = (e) => {
+    if(e){
+      setPtype((ptype) => ({ ...ptype, Status: "ACTIVE" }));
+    }
+    else{
+      setPtype((ptype) => ({ ...ptype, Status: "INACTIVE" }));
+    }
+  }
   const ptypehandler = (event) => {
     const {name, value} = event.target
   setPtype((ptype) => ({ ...ptype, [name]: value }));
@@ -70,12 +78,12 @@ const Planttype = () => {
             label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
               Status </span>}
             >
-            <Select name="Status"
-              value={ptype.Status}
-              onChange={value => ptypehandler({target : {value, name: "Status"}})}>
-              <Option value="ACTIVE">ACTIVE</Option>
-              <Option value="INACTIVE">INACTIVE</Option>
-            </Select>
+              <Switch
+              // value={ptype.Status}
+              checkedChildren="ACTIVE" 
+              unCheckedChildren="INACTIVE" 
+              defaultChecked={ptype.Status === "ACTIVE" ? true : false} onChange={handleStatusChange}
+               />
           </Form.Item>
        
           <Form.Item wrapperCol={{ offset: 12, span: 16 }}

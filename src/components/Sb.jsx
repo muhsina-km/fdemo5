@@ -74,7 +74,7 @@ const App = () => {
     ]),
   ];
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ height: '100vh',overflow: 'hidden' }}>
       <Header style={{ background: colorBgContainer, padding: 0 }}>
         <Navbar />
       </Header>
@@ -127,6 +127,7 @@ const App = () => {
             position: 'relative',
             height: '100vh',
             overflow: 'auto',
+  
           }}>
           {renderCurrentView()}
         </Content>
