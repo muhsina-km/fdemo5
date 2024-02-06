@@ -73,8 +73,8 @@ const Plantdetailsview = () => {
       <h1
         style={{
           textAlign: "center",
-          marginTop: "100px",
-          marginLeft: "100px",
+          marginTop: "10px",
+          marginLeft: "30px",
           color: "#ffffff",
         }}
       >
@@ -86,10 +86,11 @@ const Plantdetailsview = () => {
         style={{
           position: 'relative',
             height: '100vh',
-            overflow: 'scroll',
+            overflowX: 'hidden',
+            overflowY: 'auto',
           marginTop: "-0.1%",
           marginBottom: "2%",
-          marginLeft: "20%",
+          marginLeft: "2%",
           marginRight: "3%",
         }}
       >
