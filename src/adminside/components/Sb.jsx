@@ -12,6 +12,7 @@ import Plant from '../pages/add/Plant';
 import { useLocation } from 'react-router-dom';
 import Plantview from '../pages/view/Plantview';
 import Plantdetailsview from '../pages/view/Plantdetailsview';
+import Dashboard from '../pages/Dashboard';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -50,6 +51,8 @@ const App = () => {
         return <Plantdetailsview method='get'/>;
       case "/home":
         return
+      case "/dashboard":
+        return <Dashboard/>
       default:
         return null;
     }
@@ -57,13 +60,13 @@ const App = () => {
   const handleClick = (key) => {
     navigate(`/${key}`, { replace: true });
     if (key === "home") {
-      navigate("/home");
+      navigate("/dashboard");
     }
     console.log(key);
     setCurrent(key);
   }
   const items = [
-    getItem('Home', '1', <HomeOutlined />, '/home', null, () => handleClick("home")),
+    getItem('Home', '1', <HomeOutlined />, '/home', null, () => handleClick("dashboard")),
     getItem('Registrations', 'sub1',  <FormOutlined />, null, [
       getItem('Plant Type', '4', null, '/planttype', null, () => handleClick("planttype")),
       getItem('Plant Details', '3', null, '/plant', null, () => handleClick("plant")),
