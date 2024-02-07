@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Card from '@mui/material/Card';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
-import './Main.css';
+import '../../stylesheets/Main.css';
 import baseurl from "../../../Api";
 import { Button, Form, Input, Select, Switch } from 'antd';
 import HostImg from '../../components/HostImg';

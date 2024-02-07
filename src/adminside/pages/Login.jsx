@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, Result, Space } from 'antd';
 import { Card } from 'antd';
 import axios from 'axios';
-import './Main.css';
+import '../stylesheets/Main.css';
 import { useNavigate } from 'react-router-dom';
 
 const App = () => {

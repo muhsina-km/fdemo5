@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import './Main.css';
+import '../../stylesheets/Main.css';
 import { Button, Card, Checkbox, Form, Input, Select, Switch, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Sb from '../../components/Sb';

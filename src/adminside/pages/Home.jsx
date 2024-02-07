@@ -1,5 +1,5 @@
 import React from 'react'
-import './Main.css'
+import '../stylesheets/Main.css';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';

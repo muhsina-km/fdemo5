@@ -1,5 +1,5 @@
 import React from 'react'
-import './Main.css';
+import '../stylesheets/Main.css';
 import Navbar from '../components/Navbar';
 
 const Welcomepage = () => {
