@@ -1,13 +1,13 @@
-import Login from './components/Login';
-import Home from './components/Home';
+import Login from './adminside/pages/Login';
+import Home from './adminside/pages/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Welcomepage from './components/Welcomepage';
-import Plant from './components/Plant';
-import Plantdetailsview from './components/Plantdetailsview';
-import Sb from './components/Sb';
-import Planttype from './components/Planttype';
-import Plantview from './components/Plantview';
-import Rerouter from './components/tools/Rerouter';
+import Welcomepage from './adminside/pages/Welcomepage';
+import Plant from './adminside/pages/add/Plant';
+import Plantdetailsview from './adminside/pages/view/Plantdetailsview';
+import Sb from './adminside/components/Sb';
+import Planttype from './adminside/pages/add/Planttype';
+import Plantview from './adminside/pages/view/Plantview';
+import Rerouter from './adminside/tools/Rerouter';
 
 
 function App() {
@@ -22,7 +22,8 @@ function App() {
 
         {/* <Route path='/main' element={<Home></Home>}></Route> */}
         <Route path="/home" element={<Sb></Sb>}></Route>
-        <Route path="/rerouter" element={<Rerouter></Rerouter>}></Route>
+        <Route path="/replantplantdetails" element={<Rerouter></Rerouter>}></Route>
+        <Route path="/replantplanttype" element={<Rerouter></Rerouter>}></Route>
         <Route path="/plant" element={<Sb></Sb>}></Route>
         <Route path="/plantdetailsview" element={<Sb></Sb>}></Route>
         <Route path="/planttype" element={<Sb></Sb>}></Route>
