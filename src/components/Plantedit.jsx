@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Button, Input, Select, Card, Form } from "antd";
+import { Button, Input, Select, Card, Form, Switch } from "antd";
 import Navbar from './Navbar';
 import baseurl from "../Api";
 const { Option } = Select;
@@ -13,9 +13,18 @@ const Plantedit = (props) => {
     const [form] = Form.useForm();
 
     var[ptype,setPtype]=useState(props.data)
+    const [ptypes, setPtypes] = useState({ Planttype: "", Status: "ACTIVE" });
     
     const navigate =useNavigate();
-    
+
+    const handleStatusChange = (e) => {
+      if(e){
+        setPtypes((ptype) => ({ ...ptype, Status: "ACTIVE" }));
+      }
+      else{
+        setPtypes((ptype) => ({ ...ptype, Status: "INACTIVE" }));
+      }
+    }
     
     const ptypehandler = (event) => {
       const {name, value} = event.target
@@ -75,18 +84,15 @@ const Plantedit = (props) => {
             />
           </Form.Item>
 
-
-
-<Form.Item
-            label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
+          <Form.Item
+            label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
               Status </span>}
             >
-              <Select name="Status"
-              value={ptype.Status}
-              onChange={value => ptypehandler({target : {value, name: "Status"}})}>
-              <Option value="ACTIVE">ACTIVE</Option>
-              <Option value="INACTIVE">INACTIVE</Option>
-            </Select>
+              <Switch
+              checkedChildren="ACTIVE" 
+              unCheckedChildren="INACTIVE" 
+              defaultChecked={ptype.Status === "ACTIVE" ? true : false} onChange={handleStatusChange}
+               />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 12, span: 16 }}

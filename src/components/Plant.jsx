@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import './Main.css';
-import { Button, Card, Checkbox, Form, Input, Select, Upload, message } from 'antd';
+import { Button, Card, Checkbox, Form, Input, Select, Switch, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Sb from './Sb';
 import Navbar from './Navbar';
@@ -23,6 +23,7 @@ const Plant = () => {
 
   var [planttype, setPlanttype] = useState([]);
   var [selectedimage, setSelectedimage] = useState(null);
+  const [pdetail, setPdetail] = useState({ Plantdetails: "", Status: "ACTIVE" });
 
   const navigate = useNavigate();
 
@@ -42,9 +43,13 @@ const Plant = () => {
   }
 
   const handleStatusChange = (e) => {
-    const newValue = e.target.checked ? 'ACTIVE' : 'INACTIVE';
-    inputHandler({ target: { value: newValue, name: 'status' } });
-  };
+    if(e){
+      setPdetail((inputs) => ({ ...inputs, Status: "ACTIVE" }));
+    }
+    else{
+      setPdetail((inputs) => ({ ...inputs, Status: "INACTIVE" }));
+    }
+  }
 
   const handleImage = (info) => {
     console.log(info)
@@ -211,16 +216,14 @@ const Plant = () => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
-          Status </span>}
-          ><ReactTextTransition springConfig={{ tension: 300, friction: 10 }}>
-            <Checkbox
-            name="status"
-            checked={inputs.status === "ACTIVE"}
-            // value={inputs.status === 'ACTIVE'}
-            onChange={handleStatusChange}/>
-            
-            {"  "}{inputs.status === 'INACTIVE' ? 'INACTIVE' : 'ACTIVE'}</ReactTextTransition>
+            label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
+              Status </span>}
+            >
+              <Switch
+              checkedChildren="ACTIVE" 
+              unCheckedChildren="INACTIVE" 
+              defaultChecked={inputs.status === "ACTIVE" ? true : false} onChange={handleStatusChange}
+               />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 12, span: 16 }}>

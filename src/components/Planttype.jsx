@@ -22,6 +22,7 @@ const Planttype = () => {
       setPtype((ptype) => ({ ...ptype, Status: "INACTIVE" }));
     }
   }
+
   const ptypehandler = (event) => {
     const {name, value} = event.target
   setPtype((ptype) => ({ ...ptype, [name]: value }));
@@ -79,7 +80,6 @@ const Planttype = () => {
               Status </span>}
             >
               <Switch
-              // value={ptype.Status}
               checkedChildren="ACTIVE" 
               unCheckedChildren="INACTIVE" 
               defaultChecked={ptype.Status === "ACTIVE" ? true : false} onChange={handleStatusChange}

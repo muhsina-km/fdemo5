@@ -5,7 +5,7 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import './Main.css';
 import baseurl from "../Api";
-import { Button, Form, Input, Select } from 'antd';
+import { Button, Form, Input, Select, Switch } from 'antd';
 import HostImg from './widgets/HostImg';
 
 const Plantdetailsedit = (props) => {
@@ -13,6 +13,7 @@ const Plantdetailsedit = (props) => {
   var [inputs, setInputs] = useState(props.data)
   var [selectedimage, setSelectedimage] = useState([]);
   var [planttype, setPlanttype] = useState([]);
+  const [pdetail, setPdetail] = useState({ Plantdetails: "", Status: "ACTIVE" });
   const { Option } = Select;
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -30,6 +31,15 @@ const Plantdetailsedit = (props) => {
     const { name, value } = event.target
     setInputs((inputs) => ({ ...inputs, [name]: value }))
     console.log(inputs)
+  }
+
+  const handleStatusChange = (e) => {
+    if(e){
+      setPdetail((inputs) => ({ ...inputs, Status: "ACTIVE" }));
+    }
+    else{
+      setPdetail((inputs) => ({ ...inputs, Status: "INACTIVE" }));
+    }
   }
 
   const handleImage = (url) => {
@@ -53,8 +63,7 @@ const Plantdetailsedit = (props) => {
 
   return (
     <div className='background-4'>
-      <Navbar />
-      <h1 style={{ textAlign: 'center', marginTop: '-120px', marginLeft: '2px' }}>
+      <h1 style={{ textAlign: 'center', marginTop: '40px', marginLeft: '2px' }}>
         To Update Plant Details
       </h1>
 
@@ -68,7 +77,7 @@ const Plantdetailsedit = (props) => {
         backgroundColor: 'white',
         border: "1px solid #ffffff",
         height: 800,
-        // marginTop: "-20%",
+        marginTop: "1%",
         marginBottom: "2%",
         marginLeft: "25%",
         }}>
@@ -191,16 +200,14 @@ const Plantdetailsedit = (props) => {
           </Form.Item>
 
           <Form.Item
-          label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
-          Status </span>}
-          >
-            <Select
-            name="status"
-            value={inputs.status}
-            onChange={value => inputHandler({target : {value, name: "status"}})}>
-              <Option value="ACTIVE">ACTIVE</Option>
-              <Option value="INACTIVE">INACTIVE</Option>
-            </Select>
+            label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
+              Status </span>}
+            >
+              <Switch
+              checkedChildren="ACTIVE" 
+              unCheckedChildren="INACTIVE" 
+              defaultChecked={inputs.status === "ACTIVE" ? true : false} onChange={handleStatusChange}
+               />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 12, span: 16 }}>
