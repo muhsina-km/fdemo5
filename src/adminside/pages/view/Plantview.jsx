@@ -57,7 +57,7 @@ const Plantview = () => {
           textAlign: "center",
           marginTop: "15px",
           marginLeft: "1%",
-          color: "#ffffff",
+          color: "#000000",
         }}
       >
         Plant Type View

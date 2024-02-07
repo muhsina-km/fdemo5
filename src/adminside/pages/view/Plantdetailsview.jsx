@@ -79,7 +79,7 @@ const Plantdetailsview = () => {
           textAlign: "center",
           marginTop: "10px",
           marginLeft: "30px",
-          color: "#ffffff",
+          color: "#000000",
         }}
       >
         Plant Details View
