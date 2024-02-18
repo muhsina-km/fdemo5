@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Input, Select, Card, Form, Switch } from "antd";
 import Navbar from '../../components/Navbar';
 import baseurl from "../../../Api";
+import HostImgCrop from '../../components/HostImgCrop';
 const { Option } = Select;
 
 
@@ -13,7 +14,8 @@ const Plantedit = (props) => {
     const [form] = Form.useForm();
 
     var[ptype,setPtype]=useState(props.data)
-    const [ptypes, setPtypes] = useState({ Planttype: "", Status: "ACTIVE" });
+    const [selectedimage, setSelectedimage] = useState([])
+    const [ptypes, setPtypes] = useState({ Planttype: "",Planttypephoto: "", Status: "ACTIVE" });
     
     const navigate =useNavigate();
 
@@ -31,6 +33,11 @@ const Plantedit = (props) => {
     setPtype((ptype) => ({ ...ptype, [name]: value }));
     console.log(ptype)
     };
+
+    const HandlePtImage = (url) => {
+       ptype.Planttypephoto = url;
+    }
+
      const saveData =()=>{
         
         if(props.method==="put")
@@ -83,6 +90,13 @@ const Plantedit = (props) => {
               onChange={ptypehandler}
             />
           </Form.Item>
+
+          <Form.Item
+            label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
+              PlantType Image </span>}
+            >
+              <HostImgCrop onUrlChange={HandlePtImage} resetAfterUpload={true} />
+              </Form.Item>
 
           <Form.Item
             label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>

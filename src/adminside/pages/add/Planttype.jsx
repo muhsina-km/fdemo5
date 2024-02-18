@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, Input, Select, Card, Form, Switch } from "antd";
 import { useNavigate } from "react-router-dom";
-import Sb from "../../components/Sb";
-import Navbar from "../../components/Navbar";
 import baseurl from "../../../Api";
+import HostImgCrop from "../../components/HostImgCrop";
 const { Option } = Select;
 
 
 const Planttype = () => {
   const [form] = Form.useForm();
-  const [ptype, setPtype] = useState({ Planttype: "", Status: "ACTIVE" });
+  const [ptype, setPtype] = useState({ Planttype: "",Planttypephoto: "", Status: "ACTIVE" });
+  const [selectedimage, setSelectedimage] = useState(null);
 
   const navigate = useNavigate();
 
@@ -28,6 +28,16 @@ const Planttype = () => {
   setPtype((ptype) => ({ ...ptype, [name]: value }));
   console.log(ptype)
   };
+
+  const HandlePtImage = (info) => {
+    console.log(info)
+    ptype.Planttypephoto =info
+    selectedimage(info);
+    return
+    const file = info.target.files[0];
+    setSelectedimage(file);
+    ptype.Planttypephoto =file;
+  }
 
   const saveData = () => {
     console.log(ptype);
@@ -74,6 +84,13 @@ const Planttype = () => {
               onChange={(value) => ptypehandler(value, "Planttype")}
             />
           </Form.Item>
+
+          <Form.Item
+            label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
+              PlantType Image </span>}
+            >
+              <HostImgCrop onUrlChange={HandlePtImage} resetAfterUpload={true} />
+              </Form.Item>
 
           <Form.Item
             label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>

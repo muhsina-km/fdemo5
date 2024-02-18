@@ -13,7 +13,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import React, { useEffect, useState } from "react";
 import Plantedit from "../edit/Plantedit";
 import Sb from "../../components/Sb";
-import { Card, Popconfirm, Tag } from "antd";
+import { Card, Image, Popconfirm, Tag } from "antd";
 import {
   CheckCircleOutlined,
   ExclamationCircleOutlined,
@@ -25,7 +25,8 @@ const Plantview = () => {
   var [ptype, setPtype] = useState([]);
   var [selected, setSelected] = useState();
   var [update, setUpdate] = useState(false);
-
+  var [trigger, setTrigger] = useState(false);
+ 
   useEffect(() => {
     axios
       .get(baseurl + "/planttype/ptview")
@@ -34,11 +35,12 @@ const Plantview = () => {
         setPtype(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [trigger]);
 
   const deletevalues = (id) => {
     console.log("Deleted", id);
     axios.put(baseurl + "/planttype/ptupdatestatus/" + id).then((response) => {
+      setTrigger(!trigger);
       alert("DELETED");
       window.location.reload(false);
     });
@@ -81,6 +83,7 @@ const Plantview = () => {
             <TableHead>
               <TableRow>
                 <TableCell><b>Plant Type</b></TableCell>
+                <TableCell><b>PlantType Image</b></TableCell>
                 <TableCell><b>Status</b></TableCell>
                 <TableCell><b>Edit</b></TableCell>
                 <TableCell><b>Delete</b></TableCell>
@@ -92,6 +95,10 @@ const Plantview = () => {
                 return (
                   <TableRow key={index}>
                     <TableCell>{value.Planttype}</TableCell>
+                    <TableCell> 
+                      <Image src={value.Planttypephoto} 
+                      style={{height: "100px", width: "100px", objectFit: "contain" }} alt="Error"/> 
+                      </TableCell>
                     <TableCell>
                       {value.Status === "ACTIVE" ? (
                         <Tag icon={<CheckCircleOutlined />} color="success">

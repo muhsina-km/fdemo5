@@ -1,7 +1,8 @@
 /* styles.css */
 
 .background-container {
-    background-image: url('https://s1.1zoom.me/big0/474/Tulips_Black_background_Pink_color_559745_1280x853.jpg');
+    /* background-image: url('https://s1.1zoom.me/big0/474/Tulips_Black_background_Pink_color_559745_1280x853.jpg'); */
+    background-image: url('https://img.freepik.com/premium-photo/mothers-day-greeting-banner-template-with-lilies-valley-bouquet-mini-glass-jar-turquoise-background-with-copy-space_150893-6448.jpg?w=1380');
     background-size: cover; /* Adjust as needed: 'cover', 'contain', etc. */
     background-position: center; /* Adjust as needed: 'center', 'top', 'bottom', etc. */
     background-repeat: no-repeat;
