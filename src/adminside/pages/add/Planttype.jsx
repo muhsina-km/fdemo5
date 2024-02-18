@@ -32,11 +32,8 @@ const Planttype = () => {
   const HandlePtImage = (info) => {
     console.log(info)
     ptype.Planttypephoto =info
-    selectedimage(info);
+    setSelectedimage(info);
     return
-    const file = info.target.files[0];
-    setSelectedimage(file);
-    ptype.Planttypephoto =file;
   }
 
   const saveData = () => {
@@ -63,7 +60,7 @@ const Planttype = () => {
           padding: 30,
           width: 500,
           marginTop: "-100px",
-          height: 300,
+          height: 350,
           marginBottom: "1%",
           marginLeft: "27%",
         }}>
@@ -91,6 +88,7 @@ const Planttype = () => {
             >
               <HostImgCrop onUrlChange={HandlePtImage} resetAfterUpload={true} />
               </Form.Item>
+
 
           <Form.Item
             label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>

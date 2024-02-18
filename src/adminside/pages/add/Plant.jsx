@@ -56,15 +56,6 @@ const Plant = () => {
     inputs.plantphoto =info
     setSelectedimage(info);
     return
-    // console.log(info.file);
-    // if (info.file.status === 'done') {
-    //   message.success(`${info.file.name} file uploaded successfully`);
-    // } else if (info.file.status === 'error') {
-    //   message.error(`${info.file.name} file upload failed.`);
-    // }
-    const file =info.target.files[0];
-    setSelectedimage(file);
-    inputs.plantphoto =file;
   };
   
 

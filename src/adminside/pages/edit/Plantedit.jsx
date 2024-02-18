@@ -67,7 +67,7 @@ const Plantedit = (props) => {
         bordered={true}
         style={{
           width: 500,
-          height: 300,
+          height: 350,
           // marginTop: "-450px",
           marginBottom: "50%",
           marginLeft: "25%",
