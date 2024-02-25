@@ -44,7 +44,7 @@ const Planttype = () => {
         alert("Record saved");
       })
       .catch((err) => console.log(err));
-    navigate("/Planttypeview");
+    navigate("/planttypeview");
   };
 
   return (
