@@ -13,6 +13,7 @@ import { useLocation } from 'react-router-dom';
 import Plantview from '../pages/view/Plantview';
 import Plantdetailsview from '../pages/view/Plantdetailsview';
 import Dashboard from '../pages/Dashboard';
+import OrderDashboard from '../pages/OrderDashboard';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -49,6 +50,8 @@ const App = () => {
         return <Plantview method='get'/>;
       case "/plantdetailsview":
         return <Plantdetailsview method='get'/>;
+      case "/orderdashboard":
+        return <OrderDashboard/>;
       case "/home":
         return
       case "/dashboard":
@@ -74,6 +77,7 @@ const App = () => {
     getItem('View', 'sub2', <EyeOutlined />, null, [
       getItem('Plant Type View', '8', null, '/planttypeview', null, () => handleClick("planttypeview")),
       getItem('Plant Details View', '6', null, '/plantdetailsview', null, () => handleClick("plantdetailsview")),
+      getItem('Order Dashboard', '7', null, '/orderdashboard', null, () => handleClick("orderdashboard")),
     ]),
   ];
   return (

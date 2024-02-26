@@ -28,7 +28,9 @@ function App() {
         <Route path="/plantdetailsview" element={<Sb></Sb>}></Route>
         <Route path="/planttype" element={<Sb></Sb>}></Route>
         <Route path="/dashboard" element={<Sb></Sb>}></Route>
+        <Route path="/orderdashboard" element={<Sb></Sb>}></Route>
         <Route path="/planttypeview" element={<Sb></Sb>}></Route>
+
       </Routes>
       </BrowserRouter>
 
