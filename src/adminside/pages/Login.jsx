@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, Input, Result, Space } from 'antd';
+import { Button, Form, Input, Result, Space, message, notification } from 'antd';
 import { Card } from 'antd';
 import axios from 'axios';
 import '../stylesheets/Main.css';
 import { useNavigate } from 'react-router-dom';
+import baseurl from '../../Api';
 
 const App = () => {
 
@@ -13,14 +14,15 @@ const App = () => {
     form.resetFields();
   };
 
-  const [mail, setMail] = useState('');
-  const [pass, setPass] = useState('');
+  const [username, setUser] = useState('');
+  const [password, setPass] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate
+  const [messageApi, contextHolder] = message.useMessage();
+  const navigate = useNavigate();
 
-  const ReadEmail = (event) => {
+  const ReadUser = (event) => {
     console.log(event.target.value);
-    setMail(event.target.value);
+    setUser(event.target.value);
   };
 
   const ReadPass = (event) => {
@@ -28,31 +30,43 @@ const App = () => {
     setPass(event.target.value);
   };
 
-  const CheckError = () => {
+  const handleLogin = async (values) => {
     try {
-      const values = form.getFieldsValue();
-      const fixedUsername = 'admin';
-      const fixedPassword = 'admin123';
+      const { username, password } = values;
+      // Make a request to your backend API
+      const response = await axios.post(`${baseurl}/login/login`, { username, password });
   
-      if (!values.username || !values.password) {
-        setError('Both username and password are required');
-      } else if (values.username === fixedUsername && values.password === fixedPassword) {
-        window.location.href = '/home';
+      if (response.data.message === 'Login successful') {
+        // Successful login
+        notification.open({
+          type: 'success',
+          message: 'Login successful',
+          placement: 'top',
+        });
+        navigate('/home');
       } else {
-        setError('Invalid username or password');
+        // Invalid credentials
+        messageApi.open({
+          type: 'error',
+          content: 'Invalid email or password',
+        });
       }
     } catch (error) {
-      console.error('Error getting form values:', error);
-      setError('Failed to check username and password');
+      console.log('Login error:', error);
+      // Handle other errors here, if needed
+      messageApi.open({
+        type: 'error',
+        content: 'Invalid email or password',
+      });
     }
   };
-
+  
      
   return (
 
     <div className='background-container'>
       <center>
-
+      {contextHolder}
         <Card
           className='background-c'
           title={<span style={{ color: 'white',fontSize: '25px' }}>LOGIN</span>}
@@ -86,14 +100,14 @@ const App = () => {
             }}
             autoComplete="off"
             requiredMark={false}
-            onFinish={CheckError}
+            onFinish={handleLogin}
             colon={false}
           >
             <Form.Item
               label={<span style={{ color: '#ffffff', fontFamily: 'cursive', fontSize: '16px' }}>
                 Username </span>}
               name="username"
-              onChange={ReadEmail}
+              onChange={ReadUser}
               rules={[
                 {
                   required: true,
@@ -128,7 +142,7 @@ const App = () => {
               <Space>
                 <Button htmlType="submit"
                 color='success'
-                  onClick={CheckError}>
+                >
                   LOGIN
                 </Button>
                 <Button htmlType="button" onClick={onReset}>
@@ -136,7 +150,7 @@ const App = () => {
                 </Button>
               </Space>
             </Form.Item>
-            {error && <div style={{ color: 'red' }}>{error}</div>}
+            {/* {error && <div style={{ color: 'red' }}>{error}</div>} */}
           </Form>
         </Card>
       </center>
