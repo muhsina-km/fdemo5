@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Switch } from '@mui/material';
 
-const OrderTable = ({ orders }) => {
-  const [status, setStatus] = useState("ORDERING");
+const OrderTable = ({ orders, onSwitchChange }) => {
 
-  const handleStatusChange = (event) => {
-    setStatus(status => status === "ORDERING" ? "DELIVERED" : "ORDERING");
-  };
+  // const [status, setStatus] = useState("ORDERING");
+
+  // const handleStatusChange = (event) => {
+  //   setStatus(status => status === "ORDERING" ? "DELIVERED" : "ORDERING");
+  // };
 
   return (
     <TableContainer component={Paper}>
@@ -35,12 +36,12 @@ const OrderTable = ({ orders }) => {
               <TableCell>{order.payment}</TableCell>
               <TableCell>
                 <Switch
-                  checked={status === "ORDERING"}
-                  onChange={handleStatusChange}
+                  checked={order.status === "ORDERING"}
+                  onChange={(e) => onSwitchChange(order._id, e.target.checked)}
                   name="statusSwitch"
                   inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
-                {status}
+                {order.staus}
               </TableCell>
             </TableRow>
           ))}

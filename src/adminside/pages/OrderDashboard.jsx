@@ -13,7 +13,7 @@ const OrderDashboard = () => {
     // Fetch orders
     axios.get(`${baseurl}/order/fetch-orders`)
       .then((response) => {
-        setOrders(response.data.orders.map(order => ({ ...order, ordering: order.status === 'Ordered' })));
+        setOrders(response.data.orders);
       })
       .catch((error) => {
         console.error('Error fetching orders:', error);
@@ -22,13 +22,9 @@ const OrderDashboard = () => {
 
   const handleSwitchChange = async (orderId, checked) => {
     try {
-      // Implement the logic for updating the order status
-      console.log(`Order with ID ${orderId} is now ${checked ? 'Ordering' : 'Delivered'}.`);
-
-      // Update the state based on your backend logic
-      setOrders(prevOrders => prevOrders.map(order => (
-        order._id === orderId ? { ...order, ordering: checked } : order
-      )));
+      const status = checked ? 'ORDERING' : 'DELIVERED';
+      await axios.patch(`${baseurl}/order/update-order-status/${orderId}`, { status });
+      setOrders(prevOrders => prevOrders.map(order => order._id === orderId ? { ...order, status } : order));
     } catch (error) {
       console.error('Error updating order status:', error);
     }
