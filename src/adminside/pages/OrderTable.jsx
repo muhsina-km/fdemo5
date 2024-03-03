@@ -1,70 +1,53 @@
 import React, { useState } from 'react';
-import { Table, Button, Switch } from 'antd';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Switch } from '@mui/material';
 
-const OrderTable = ({ orders, onSwitchChange }) => {
+const OrderTable = ({ orders }) => {
+  const [status, setStatus] = useState("ORDERING");
 
-    const [ptype, setPtype] = useState({ Status: "ORDERING" });
+  const handleStatusChange = (event) => {
+    setStatus(status => status === "ORDERING" ? "DELIVERED" : "ORDERING");
+  };
 
-    const handleStatusChange = (e) => {
-        if(e){
-          setPtype((ptype) => ({ ...ptype, Status: "ORDERING" }));
-        }
-        else{
-          setPtype((ptype) => ({ ...ptype, Status: "DELIVERED" }));
-        }
-      }
-
-  const columns = [
-    {
-      title: 'Order ID',
-      dataIndex: '_id',
-      key: '_id',
-    },
-    {
-        title: 'Email Id',
-        dataIndex: 'email',
-        key: 'email',
-      },
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
-    },
-    {
-      title: 'Phone',
-      dataIndex: 'phone',
-      key: 'phone',
-    },
-    {
-      title: 'District',
-      dataIndex: 'district',
-      key: 'district',
-    },
-    {
-      title: 'Payment',
-      dataIndex: 'payment',
-      key: 'payment',
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status',
-        key: 'status',
-        render: (status, record) => (
-            <Switch
-            checkedChildren="ORDERING" 
-            unCheckedChildren="DELIVERED" 
-            defaultChecked={ptype.Status === "ORDERING" ? true : false} onChange={handleStatusChange}
-             />
-        ),
-      },
-    ];
-
-  return <Table dataSource={orders} columns={columns} />;
+  return (
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell><b>Order ID</b></TableCell>
+            <TableCell><b>Email Id</b></TableCell>
+            <TableCell><b>Name</b></TableCell>
+            <TableCell><b>Address</b></TableCell>
+            <TableCell><b>Phone</b></TableCell>
+            <TableCell><b>District</b></TableCell>
+            <TableCell><b>Payment</b></TableCell>
+            <TableCell><b>Status</b></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {orders.map((order) => (
+            <TableRow key={order._id}>
+              <TableCell>{order._id}</TableCell>
+              <TableCell>{order.email}</TableCell>
+              <TableCell>{order.name}</TableCell>
+              <TableCell>{order.address}</TableCell>
+              <TableCell>{order.phone}</TableCell>
+              <TableCell>{order.district}</TableCell>
+              <TableCell>{order.payment}</TableCell>
+              <TableCell>
+                <Switch
+                  checked={status === "ORDERING"}
+                  onChange={handleStatusChange}
+                  name="statusSwitch"
+                  inputProps={{ 'aria-label': 'secondary checkbox' }}
+                />
+                {status}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
 };
 
 export default OrderTable;

@@ -44,15 +44,6 @@ const Dashboard = () => {
       .catch((error) => {
         console.error('Error fetching plant types data:', error);
       });
-
-    // Fetch orders
-    axios.get(`${baseurl}/order/fetch-orders`)
-      .then((response) => {
-        setOrders(response.data.orders);
-      })
-      .catch((error) => {
-        console.error('Error fetching orders:', error);
-      });
   }, []);
 
   return (
@@ -88,32 +79,6 @@ const Dashboard = () => {
               <Title level={5}>Inactive Plant Types: {inactivePlantTypes}</Title>
             </Row>
           </Card>
-        </Col>
-      </Row>
-
-      <Row gutter={16} style={{ margin: '20px' }}>
-        <Col span={24}>
-          <Row gutter={16}>
-        <Card style={{ marginBottom: 50, width: 800, height: 320, filter: 'drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.12))' }}>
-          <Title level={3}>Orders</Title>
-          {orders.map((order) => (
-            <div key={order._id}>
-              <Meta title={order.name} />
-            <p>Address:{order.address}</p>
-            <p>Phone No: {order.phone}</p>
-            <p>District: {order.district}</p>
-            <p>Payment: {order.payment}</p>
-
-            {/* <h4>Ordered Items:</h4>
-            {order.items.map((item) => (
-              <div key={item._id}>
-                <p>Product ID: {item.productId}</p>
-                <p>Quantity: {item.quantity}</p>
-            </div>
-            ))} */}
-            </div>
-          ))}
-          </Card> </Row>
         </Col>
       </Row>
     </div>

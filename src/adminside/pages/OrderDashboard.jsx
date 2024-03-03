@@ -24,7 +24,7 @@ const OrderDashboard = () => {
     try {
       // Implement the logic for updating the order status
       console.log(`Order with ID ${orderId} is now ${checked ? 'Ordering' : 'Delivered'}.`);
-      
+
       // Update the state based on your backend logic
       setOrders(prevOrders => prevOrders.map(order => (
         order._id === orderId ? { ...order, ordering: checked } : order
@@ -35,19 +35,34 @@ const OrderDashboard = () => {
   };
 
   return (
-    <div>
-      <Divider orientation="left">
-        <Title level={2}>Order Dashboard</Title>
-      </Divider>
+    <div className="background-table">
+      <h1
+        style={{
+          textAlign: "center",
+          marginTop: "15px",
+          marginLeft: "1%",
+          color: "#000000",
+        }}
+      >
+        Order details View
+      </h1>
 
-      <Row gutter={16} style={{ margin: '20px' }}>
-        <Col span={24}>
-          <Card style={{ marginBottom: 50, width: 960, height: 320, filter: 'drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.12))' }}>
-            <Title level={3}>Orders</Title>
-            <OrderTable orders={orders} onSwitchChange={handleSwitchChange} />
-          </Card>
-        </Col>
-      </Row>
+      <Card
+        className="background-2"
+        bordered={true}
+        style={{
+          position: 'relative',
+            height: '100vh',
+            overflowX: 'hidden',
+            overflowY: 'auto',
+          marginTop: "-0.1%",
+          marginBottom: "8%",
+          marginLeft: "3%",
+          marginRight: "3%",
+        }}
+      >
+        <OrderTable orders={orders} onSwitchChange={handleSwitchChange} />
+      </Card>
     </div>
   );
 };
