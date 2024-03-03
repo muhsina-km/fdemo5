@@ -78,7 +78,7 @@ const Plantdetailsedit = (props) => {
         border: "1px solid #ffffff",
         height: 800,
         marginTop: "1%",
-        marginBottom: "2%",
+        marginBottom: "10%",
         marginLeft: "25%",
         }}>
 
@@ -186,17 +186,9 @@ const Plantdetailsedit = (props) => {
           label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Image </span>}
           >
-            {/* <Upload
-            name="plantphoto"
-              customRequest={() => {}} // You need to implement the file upload logic here
-              onChange={handleImage}
-              showUploadList={false}
-            >
-              <Button icon
-              ={<UploadOutlined />}>Upload Image</Button>
-            </Upload> */}
-            <HostImg onUrlChange={handleImage} resetAfterUpload={true} />
-            {/* <input type="file" onChange={handleImage}/> */}
+            <HostImg onUrlChange={handleImage} resetAfterUpload={true}
+            oldimageUrl={inputs.plantphoto} />
+            
           </Form.Item>
 
           <Form.Item

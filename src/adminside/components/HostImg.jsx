@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Upload, Button, message, Spin, Card, Avatar, Modal } from 'antd';
 import { UploadOutlined, EyeOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
-const HostImg = ({ onUrlChange, resetAfterUpload }) => {
+const HostImg = ({ onUrlChange, resetAfterUpload, oldimageUrl }) => {
   const [fileList, setFileList] = useState([]);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+
+  useEffect(() => {
+    if (oldimageUrl) {
+      setUploadedImageUrl(oldimageUrl);
+    }
+  }, [oldimageUrl]);
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);

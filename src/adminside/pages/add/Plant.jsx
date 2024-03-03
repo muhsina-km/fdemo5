@@ -193,17 +193,7 @@ const Plant = () => {
           label={<span style={{ fontFamily: 'cursive', fontSize: '16px' }}>
           Image </span>}
           >
-            {/* <Upload
-            name="plantphoto"
-              customRequest={() => {}} // You need to implement the file upload logic here
-              onChange={handleImage}
-              showUploadList={false}
-            >
-              <Button icon
-              ={<UploadOutlined />}>Upload Image</Button>
-            </Upload> */}
             <HostImg onUrlChange={handleImage} resetAfterUpload={true} />
-            {/* <input type="file" onChange={handleImage}/> */}
           </Form.Item>
 
           <Form.Item

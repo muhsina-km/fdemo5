@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Upload, Button, message, Modal, Row, Col } from 'antd';
 import { DeleteOutlined, EyeOutlined, RestOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import ImgCrop from 'antd-img-crop';
 
-const HostImgCrop = ({ onUrlChange, resetAfterUpload }) => {
+const HostImgCrop = ({ onUrlChange, resetAfterUpload, oldimageUrl }) => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    if (oldimageUrl) {
+      setImageUrl(oldimageUrl);
+    }
+  }, [oldimageUrl]);
 
   const onChange = ({ fileList: newFileList }) => {
     setLoading(true);

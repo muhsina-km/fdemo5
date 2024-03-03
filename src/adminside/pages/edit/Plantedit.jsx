@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Button, Input, Select, Card, Form, Switch } from "antd";
+import { Button, Input, Select, Card, Form, Switch, Space } from "antd";
 import Navbar from '../../components/Navbar';
 import baseurl from "../../../Api";
 import HostImgCrop from '../../components/HostImgCrop';
@@ -56,7 +56,6 @@ const Plantedit = (props) => {
     <div 
     className='background-4'
     >
-        {/* <Navbar/> */}
     
         <h1 style={{ textAlign: 'center', marginLeft: '10px' }}>
         To Update Plant Type
@@ -95,7 +94,8 @@ const Plantedit = (props) => {
             label={<span style={{fontFamily: 'cursive', fontSize: '16px' }}>
               PlantType Image </span>}
             >
-              <HostImgCrop onUrlChange={HandlePtImage} resetAfterUpload={true} />
+              <HostImgCrop onUrlChange={HandlePtImage} resetAfterUpload={true} 
+              oldimageUrl={ptype.Planttypephoto} />
               </Form.Item>
 
           <Form.Item
