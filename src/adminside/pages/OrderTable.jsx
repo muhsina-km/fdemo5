@@ -3,14 +3,8 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 
 const OrderTable = ({ orders, onSwitchChange }) => {
 
-  // const [status, setStatus] = useState("ORDERING");
-
-  // const handleStatusChange = (event) => {
-  //   setStatus(status => status === "ORDERING" ? "DELIVERED" : "ORDERING");
-  // };
-
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <Table>
         <TableHead>
           <TableRow>
