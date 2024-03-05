@@ -20,6 +20,7 @@ const OrderTable = ({ orders, onSwitchChange }) => {
           <TableRow>
             <TableCell><b>Order ID</b></TableCell>
             <TableCell><b>OrderedItems</b></TableCell>
+            <TableCell><b>Order Date</b></TableCell>
             <TableCell><b>Email Id</b></TableCell>
             <TableCell><b>Name</b></TableCell>
             <TableCell><b>Address</b></TableCell>
@@ -41,6 +42,7 @@ const OrderTable = ({ orders, onSwitchChange }) => {
                 {formatItems(order.items)}
                 </Space>
                 </TableCell>
+              <TableCell>{new Date(order.orderDate).toLocaleDateString()}</TableCell>
               <TableCell>{order.email}</TableCell>
               <TableCell>{order.name}</TableCell>
               <TableCell>{order.address}</TableCell>
