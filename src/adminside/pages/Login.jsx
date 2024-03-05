@@ -48,7 +48,7 @@ const App = () => {
         // Invalid credentials
         messageApi.open({
           type: 'error',
-          content: 'Invalid email or password',
+          content: 'Invalid username or password',
         });
       }
     } catch (error) {
@@ -56,7 +56,7 @@ const App = () => {
       // Handle other errors here, if needed
       messageApi.open({
         type: 'error',
-        content: 'Invalid email or password',
+        content: 'Invalid username or password',
       });
     }
   };

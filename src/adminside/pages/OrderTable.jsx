@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Switch } from '@mui/material';
+import { Space } from 'antd';
 
 const OrderTable = ({ orders, onSwitchChange }) => {
+  // Function to format plant names and quantities
+  const formatItems = (items) => {
+    return items.map((item, index) => (
+      <span key={index}>
+        {index+1}. <b>{item.plantname}</b> <b>(</b>ID: {item.productId}, Qty: {item.quantity}<b>)</b>
+        {index < items.length - 1 ? ', ' : ''}
+      </span>
+    ));
+  };
 
   return (
     <TableContainer>
@@ -9,6 +19,7 @@ const OrderTable = ({ orders, onSwitchChange }) => {
         <TableHead>
           <TableRow>
             <TableCell><b>Order ID</b></TableCell>
+            <TableCell><b>OrderedItems</b></TableCell>
             <TableCell><b>Email Id</b></TableCell>
             <TableCell><b>Name</b></TableCell>
             <TableCell><b>Address</b></TableCell>
@@ -22,6 +33,14 @@ const OrderTable = ({ orders, onSwitchChange }) => {
           {orders.map((order) => (
             <TableRow key={order._id}>
               <TableCell>{order._id}</TableCell>
+              <TableCell>
+                <Space
+                 direction='vertical'
+                 size='middle'
+                 style={{ display: 'flex' }}>
+                {formatItems(order.items)}
+                </Space>
+                </TableCell>
               <TableCell>{order.email}</TableCell>
               <TableCell>{order.name}</TableCell>
               <TableCell>{order.address}</TableCell>
@@ -32,10 +51,9 @@ const OrderTable = ({ orders, onSwitchChange }) => {
                 <Switch
                   checked={order.status === "ORDERING"}
                   onChange={(e) => onSwitchChange(order._id, e.target.checked)}
-                  name="statusSwitch"
                   inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
-                {order.staus}
+                {order.status}
               </TableCell>
             </TableRow>
           ))}
