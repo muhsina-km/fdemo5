@@ -142,10 +142,10 @@ const Plantdetailsview = () => {
                       />
                     </TableCell>
                     <TableCell>
-                      {value.status==="ACTIVE" ? <Tag icon={<CheckCircleOutlined />} color="success">
-                        ACTIVE
+                      {value.status==="AVAILABLE" ? <Tag icon={<CheckCircleOutlined />} color="success">
+                        AVAILABLE
                       </Tag> : <Tag icon={<ExclamationCircleOutlined />} color="warning">
-                        INACTIVE
+                        UNAVAILABLE
                       </Tag>}
                     </TableCell>
                     <TableCell>

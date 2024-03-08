@@ -100,16 +100,16 @@ const Plantview = () => {
                       style={{height: "100px", width: "100px", objectFit: "contain" }} alt="Error"/> 
                       </TableCell>
                     <TableCell>
-                      {value.Status === "ACTIVE" ? (
+                      {value.Status === "AVAILABLE" ? (
                         <Tag icon={<CheckCircleOutlined />} color="success">
-                          ACTIVE
+                          AVAILABLE
                         </Tag>
                       ) : (
                         <Tag
                           icon={<ExclamationCircleOutlined />}
                           color="warning"
                         >
-                          INACTIVE
+                          UNAVAILABLE
                         </Tag>
                       )}
                     </TableCell>

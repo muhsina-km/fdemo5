@@ -13,7 +13,7 @@ const Plantdetailsedit = (props) => {
   var [inputs, setInputs] = useState(props.data)
   var [selectedimage, setSelectedimage] = useState([]);
   var [planttype, setPlanttype] = useState([]);
-  const [pdetail, setPdetail] = useState({ Plantdetails: "", Status: "ACTIVE" });
+  const [pdetail, setPdetail] = useState({ Plantdetails: "", Status: "AVAILABLE" });
   const { Option } = Select;
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -35,10 +35,10 @@ const Plantdetailsedit = (props) => {
 
   const handleStatusChange = (e) => {
     if(e){
-      inputs.status = "ACTIVE";
+      inputs.status = "AVAILABLE";
     }
     else{
-      inputs.status = "INACTIVE";
+      inputs.status = "UNAVAILABLE";
     }
   }
 
@@ -196,9 +196,9 @@ const Plantdetailsedit = (props) => {
               Status </span>}
             >
               <Switch
-              checkedChildren="ACTIVE" 
-              unCheckedChildren="INACTIVE" 
-              defaultChecked={inputs.status === "ACTIVE" ? true : false} onChange={handleStatusChange}
+              checkedChildren="AVAILABLE" 
+              unCheckedChildren="UNAVAILABLE" 
+              defaultChecked={inputs.status === "AVAILABLE" ? true : false} onChange={handleStatusChange}
                />
           </Form.Item>
 

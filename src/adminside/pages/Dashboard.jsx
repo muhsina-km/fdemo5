@@ -9,12 +9,12 @@ import Meta from 'antd/es/card/Meta';
 const Dashboard = () => {
   const { Title } = Typography;
   const [totalPlants, setTotalPlants] = useState(0);
-  const [activePlants, setActivePlants] = useState(0);
-  const [inactivePlants, setInactivePlants] = useState(0);
+  const [AVAILABLEPlants, setAVAILABLEPlants] = useState(0);
+  const [UNAVAILABLEPlants, setUNAVAILABLEPlants] = useState(0);
 
   const [totalPlantTypes, setTotalPlantTypes] = useState(0);
-  const [activePlantTypes, setActivePlantTypes] = useState(0);
-  const [inactivePlantTypes, setInactivePlantTypes] = useState(0);
+  const [AVAILABLEPlantTypes, setAVAILABLEPlantTypes] = useState(0);
+  const [UNAVAILABLEPlantTypes, setUNAVAILABLEPlantTypes] = useState(0);
 
   const [orders, setOrders] = useState([]);
 
@@ -25,9 +25,9 @@ const Dashboard = () => {
         console.log('Plant data response', response);
         setTotalPlants(response.data.length);
 
-        const activePlantsCount = response.data.filter((plant) => plant.status === 'ACTIVE').length;
-        setActivePlants(activePlantsCount);
-        setInactivePlants(response.data.length - activePlantsCount);
+        const AVAILABLEPlantsCount = response.data.filter((plant) => plant.status === 'AVAILABLE').length;
+        setAVAILABLEPlants(AVAILABLEPlantsCount);
+        setUNAVAILABLEPlants(response.data.length - AVAILABLEPlantsCount);
       })
       .catch((error) => {
         console.error('Error fetching plant data:', error);
@@ -37,9 +37,9 @@ const Dashboard = () => {
       .then((response) => {
         setTotalPlantTypes(response.data.length);
 
-        const activePlantTypesCount = response.data.filter((type) => type.Status === 'ACTIVE').length;
-        setActivePlantTypes(activePlantTypesCount);
-        setInactivePlantTypes(response.data.length - activePlantTypesCount);
+        const AVAILABLEPlantTypesCount = response.data.filter((type) => type.Status === 'AVAILABLE').length;
+        setAVAILABLEPlantTypes(AVAILABLEPlantTypesCount);
+        setUNAVAILABLEPlantTypes(response.data.length - AVAILABLEPlantTypesCount);
       })
       .catch((error) => {
         console.error('Error fetching plant types data:', error);
@@ -58,14 +58,14 @@ const Dashboard = () => {
             <Row gutter={16}>
               <Col span={7}>
                 <Title level={4}>Total Plants : <CountUp end={totalPlants} duration={2.75} /></Title>
-                <Title level={5}>Active Plants: {activePlants}</Title>
-                <Title level={5}>Inactive Plants: {inactivePlants}</Title>
+                <Title level={5}>AVAILABLE Plants: {AVAILABLEPlants}</Title>
+                <Title level={5}>UNAVAILABLE Plants: {UNAVAILABLEPlants}</Title>
               </Col>
               <Col span={17} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <PieChartCom 
                 totalPlants={totalPlants}
-                activeCount={activePlants} 
-                inactiveCount={inactivePlants} />
+                AVAILABLECount={AVAILABLEPlants} 
+                UNAVAILABLECount={UNAVAILABLEPlants} />
               </Col>
             </Row>
           </Card>
@@ -75,8 +75,8 @@ const Dashboard = () => {
           <Card style={{ width: 300, height: 320, filter: 'drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.12))' }}>
             <Row gutter={16}>
               <Title level={4}>Total Plant Types : <CountUp end={totalPlantTypes} duration={2.75} /></Title>
-              <Title level={5}>Active Plant Types: {activePlantTypes}</Title>
-              <Title level={5}>Inactive Plant Types: {inactivePlantTypes}</Title>
+              <Title level={5}>AVAILABLE Plant Types: {AVAILABLEPlantTypes}</Title>
+              <Title level={5}>UNAVAILABLE Plant Types: {UNAVAILABLEPlantTypes}</Title>
             </Row>
           </Card>
         </Col>

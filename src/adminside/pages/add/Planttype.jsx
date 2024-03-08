@@ -9,17 +9,17 @@ const { Option } = Select;
 
 const Planttype = () => {
   const [form] = Form.useForm();
-  const [ptype, setPtype] = useState({ Planttype: "",Planttypephoto: "", Status: "ACTIVE" });
+  const [ptype, setPtype] = useState({ Planttype: "",Planttypephoto: "", Status: "AVAILABLE" });
   const [selectedimage, setSelectedimage] = useState(null);
 
   const navigate = useNavigate();
 
   const handleStatusChange = (e) => {
     if(e){
-      setPtype((ptype) => ({ ...ptype, Status: "ACTIVE" }));
+      setPtype((ptype) => ({ ...ptype, Status: "AVAILABLE" }));
     }
     else{
-      setPtype((ptype) => ({ ...ptype, Status: "INACTIVE" }));
+      setPtype((ptype) => ({ ...ptype, Status: "UNAVAILABLE" }));
     }
   }
 
@@ -95,9 +95,9 @@ const Planttype = () => {
               Status </span>}
             >
               <Switch
-              checkedChildren="ACTIVE" 
-              unCheckedChildren="INACTIVE" 
-              defaultChecked={ptype.Status === "ACTIVE" ? true : false} onChange={handleStatusChange}
+              checkedChildren="AVAILABLE" 
+              unCheckedChildren="UNAVAILABLE" 
+              defaultChecked={ptype.Status === "AVAILABLE" ? true : false} onChange={handleStatusChange}
                />
           </Form.Item>
        
