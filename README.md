@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## ACTIVE Scripts
 
 In the project directory, you can run:
 
@@ -16,7 +16,7 @@ You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interAVAILABLE watch mode.\
+Launches the test runner in the interACTIVE watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`

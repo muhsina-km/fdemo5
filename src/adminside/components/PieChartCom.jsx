@@ -7,8 +7,8 @@ const PieChartCom = (props) => {
   // Dummy data for illustration, replace with actual data
   const data = [
     { name: 'Total', value: props.totalPlants || 0 },
-    { name: 'AVAILABLE', value: props.AVAILABLECount || 0 },
-    { name: 'UNAVAILABLE', value: props.UNAVAILABLECount || 0 },
+    { name: 'ACTIVE', value: props.ACTIVECount || 0 },
+    { name: 'INACTIVE', value: props.INACTIVECount || 0 },
   ];
 
   return (
