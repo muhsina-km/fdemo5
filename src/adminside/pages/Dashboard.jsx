@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Fetch total plants and plant types
-    axios.get(`${baseurl}/plantdetails/pview/`)
+    axios.get(`${baseurl}/plantdetails/admin/pview/`)
       .then((response) => {
         console.log('Plant data response', response);
         setTotalPlants(response.data.length);

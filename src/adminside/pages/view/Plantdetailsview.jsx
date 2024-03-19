@@ -39,7 +39,7 @@ const Plantdetailsview = () => {
 
   useEffect(() => {
     axios
-      .get(baseurl + "/plantdetails/pview")
+      .get(baseurl + "/plantdetails/admin/pview")
       .then((response) => {
         console.log(response.data);
         setPlantdetailsview(response.data);
