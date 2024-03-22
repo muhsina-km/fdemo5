@@ -56,6 +56,7 @@ const OrderTable = ({ orders, onSwitchChange }) => {
                   checked={order.status === "ORDERING"}
                   onChange={(checked) => onSwitchChange(order._id, checked)}
                   aria-label="secondary checkbox"
+                  disabled = {order.status === "DELIVERED"}
                 />
                 {/* {order.status} */}
               </TableCell>
