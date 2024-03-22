@@ -29,7 +29,7 @@ const Plantview = () => {
  
   useEffect(() => {
     axios
-      .get(baseurl + "/planttype/ptview")
+      .get(baseurl + "/planttype/admin/ptview")
       .then((response) => {
         console.log(response.data);
         setPtype(response.data);

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Switch } from '@mui/material';
-import { Space } from 'antd';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Space, Switch } from 'antd';
 
 const OrderTable = ({ orders, onSwitchChange }) => {
   // Function to format plant names and quantities
   const formatItems = (items) => {
     return items.map((item, index) => (
       <span key={index}>
-        {index+1}. <b>{item.plantname}</b> <b>(</b>ID: {item.productId}, Qty: {item.quantity}<b>)</b>
+        {index + 1}. <b>{item.plantname}</b> <b>(</b>ID: {item.productId}, Qty: {item.quantity}<b>)</b>
         {index < items.length - 1 ? ', ' : ''}
       </span>
     ));
@@ -36,12 +36,12 @@ const OrderTable = ({ orders, onSwitchChange }) => {
               <TableCell>{order._id}</TableCell>
               <TableCell>
                 <Space
-                 direction='vertical'
-                 size='middle'
-                 style={{ display: 'flex' }}>
-                {formatItems(order.items)}
+                  direction='vertical'
+                  size='middle'
+                  style={{ display: 'flex' }}>
+                  {formatItems(order.items)}
                 </Space>
-                </TableCell>
+              </TableCell>
               <TableCell>{new Date(order.orderDate).toLocaleDateString()}</TableCell>
               <TableCell>{order.email}</TableCell>
               <TableCell>{order.name}</TableCell>
@@ -50,12 +50,14 @@ const OrderTable = ({ orders, onSwitchChange }) => {
               <TableCell>{order.district}</TableCell>
               <TableCell>{order.payment}</TableCell>
               <TableCell>
-                <Switch
+                <Switch 
+                 checkedChildren={<span>ORDERING</span>}  
+                 unCheckedChildren={<span>DELIVERED</span>} 
                   checked={order.status === "ORDERING"}
-                  onChange={(e) => onSwitchChange(order._id, e.target.checked)}
-                  inputProps={{ 'aria-label': 'secondary checkbox' }}
+                  onChange={(checked) => onSwitchChange(order._id, checked)}
+                  aria-label="secondary checkbox"
                 />
-                {order.status}
+                {/* {order.status} */}
               </TableCell>
             </TableRow>
           ))}

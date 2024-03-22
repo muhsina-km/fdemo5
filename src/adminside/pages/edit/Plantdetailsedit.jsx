@@ -20,7 +20,7 @@ const Plantdetailsedit = (props) => {
 
   useEffect(() => {
 
-    axios.get (baseurl+"/planttype/ptview")
+    axios.get (baseurl+"/planttype/admin/ptview")
       .then(response => {
         setPlanttype(response.data)
       })

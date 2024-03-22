@@ -45,7 +45,7 @@ const Plantdetailsview = () => {
         setPlantdetailsview(response.data);
       })
       .catch((err) => console.log(err));
-      axios.get(baseurl + "/planttype/ptview")
+      axios.get(baseurl + "/planttype/admin/ptview")
       .then((response) => {
         console.log(response.data);
         setPlanttype(response.data);

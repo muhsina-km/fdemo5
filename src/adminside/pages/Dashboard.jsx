@@ -33,7 +33,7 @@ const Dashboard = () => {
         console.error('Error fetching plant data:', error);
       });
 
-    axios.get(`${baseurl}/planttype/ptview`)
+    axios.get(`${baseurl}/planttype/admin/ptview`)
       .then((response) => {
         setTotalPlantTypes(response.data.length);
 
