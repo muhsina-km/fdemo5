@@ -11,7 +11,7 @@ const OrderDashboard = () => {
 
   useEffect(() => {
     // Fetch orders
-    axios.get(`${baseurl}/order/fetch-orders`)
+    axios.get(`${baseurl}/order/fetch-orders/admin`)
       .then((response) => {
         setOrders(response.data.orders);
       })

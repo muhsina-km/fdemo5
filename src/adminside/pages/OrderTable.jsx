@@ -18,6 +18,7 @@ const OrderTable = ({ orders, onSwitchChange }) => {
       <Table>
         <TableHead>
           <TableRow>
+            <TableCell><b>No.</b></TableCell>
             <TableCell><b>Order ID</b></TableCell>
             <TableCell><b>OrderedItems</b></TableCell>
             <TableCell><b>Order Date</b></TableCell>
@@ -33,6 +34,7 @@ const OrderTable = ({ orders, onSwitchChange }) => {
         <TableBody>
           {orders.map((order) => (
             <TableRow key={order._id}>
+              <TableCell>{orders.indexOf(order) + 1}</TableCell>
               <TableCell>{order._id}</TableCell>
               <TableCell>
                 <Space
